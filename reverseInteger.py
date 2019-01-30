@@ -11,4 +11,4 @@ def reverse_number(n):
 
     return r
 
-print(reverse_number(00123321))
+print(reverse_number(24))

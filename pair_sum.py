@@ -18,6 +18,9 @@ def pair_sum(array,k):
     if len(array) < 2:
         return print('Too small')
 
+    if k < min(array):
+        return print("Sum number is too small")
+
     seen = set()
 
     output = set()
@@ -35,4 +38,4 @@ def pair_sum(array,k):
     print('\n'.join(map(str,list(output))))
 
 
-pair_sum([1,3,2,2],4)
+pair_sum([14,26,72,87],40)
