@@ -7,12 +7,12 @@
 # finish - super is This
 
 def reverse(s):
-    if len(s) < len(s):
+    if len(s) < 2:
         return "Lenght of the string is too short"
 
     length = len(s)
     words = []
-    spaces = [" "]
+    spaces = " "
     i = 0
 
     while i < length:

@@ -1,9 +1,8 @@
 #!/usr/bin/python
 
-def isAnagram(s1,s2):
-
-    s1 = s1.replace(" ","").lower()
-    s2 = s2.replace(" ","").lower()
+def isAnagram(s1, s2):
+    s1 = s1.replace(" ", "").lower()
+    s2 = s2.replace(" ", "").lower()
 
     if len(s1) != len(s2):
         return False
@@ -28,4 +27,5 @@ def isAnagram(s1,s2):
 
     return True
 
-print(isAnagram("Public Relations","crap built on lies"))
+
+print(isAnagram("Public Relations", "crap built on lies"))

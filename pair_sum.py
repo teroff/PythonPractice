@@ -13,8 +13,8 @@ would return 2 pairs:
 
 '''
 
-def pair_sum(array,k):
 
+def pair_sum(array, k):
     if len(array) < 2:
         return print('Too small')
 
@@ -34,8 +34,7 @@ def pair_sum(array,k):
         else:
             output.add((min(num, target), max(num, target)))
 
+    print('\n'.join(map(str, list(output))))
 
-    print('\n'.join(map(str,list(output))))
 
-
-pair_sum([14,26,72,87],40)
+pair_sum([14, 26, 72, 87], 40)

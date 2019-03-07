@@ -4,7 +4,6 @@
 
 
 def isRotation(list1, list2):
-
     if len(list1) != len(list2):
         return False
 
@@ -20,11 +19,12 @@ def isRotation(list1, list2):
         return False
 
     for x in range(len(list1)):
-        l2_index = (key_counter+x) % len(list1)
+        l2_index = (key_counter + x) % len(list1)
 
         if list1[x] != list2[l2_index]:
-            return  False
+            return False
 
     return True
 
-print(isRotation([1,2,3,4,5,6,7],[4,5,6,7,1,2,3]))
+
+print(isRotation([1, 2, 3, 4, 5, 6, 7], [4, 5, 6, 7, 1, 2, 3]))

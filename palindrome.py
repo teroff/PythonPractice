@@ -14,7 +14,7 @@ def reverseString(s):
 
         while i >= 0:
             revs = revs + str(s[i])
-            i = i -1
+            i = i - 1
         return revs
 
 
@@ -34,4 +34,4 @@ def isPalindrom(s1, s2):
 
 word = "aba"
 
-print(isPalindrom(word,reverseString(word)))
+print(isPalindrom(word, reverseString(word)))

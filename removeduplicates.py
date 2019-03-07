@@ -2,7 +2,7 @@
 
 """
 
-Remove duplicates characters in a given string keeping the only first occurrences. For example,
+Remove duplicates characters in a given stringRemove duplicates characters in a given string keeping the only first occurrences. For example,
 is the input is "Public Relationship" the output should be "Public Reatonshp"
 
 We need a data structure to keep track of the characters we have seen so far, which can perform efficient find
