@@ -35,3 +35,5 @@ def permutations(word):
         for i in range(len(perm) + 1):
             result.append(perm[:i] + char + perm[i:])
     return result
+
+print(permutations('123'))
