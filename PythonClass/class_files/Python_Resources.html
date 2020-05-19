@@ -1,0 +1,55 @@
+<h1 id="python-resources">Python Resources</h1>
+<hr />
+<div class="toc">
+<ul>
+<li><a href="#python-resources">Python Resources</a><ul>
+<li><a href="#editors-development-environments">Editors &amp; Development Environments</a></li>
+<li><a href="#the-basics">The Basics</a></li>
+<li><a href="#web-scraping">Web Scraping</a></li>
+<li><a href="#being-pythonic">Being Pythonic</a></li>
+<li><a href="#data-science">Data Science</a></li>
+<li><a href="#a-note-about-python-2-vs-3">A note about Python 2 vs 3</a><ul>
+<li><a href="#print-is-a-function-in-python-3">print is a function in Python 3</a></li>
+<li><a href="#many-things-return-generators-or-views-rather-than-lists">Many things return generators or views rather than lists</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<hr />
+<h2 id="editors-development-environments">Editors &amp; Development Environments</h2>
+<p><a href="https://www.sublimetext.com">Sublime Text</a>
+    For class purposes I strongly recommend Sublime Text. Excellent support for Python, including syntax coloring and the ability to run a script and see the results within the editor.</p>
+<p><a href="https://www.jetbrains.com/pycharm/">PyCharm</a>
+    Powerful incredibly full-featured development environment. For serious projects, this is my favorite. It makes everything about Python even easier, including installing virtual environments and packages for you. Integrates with Git.</p>
+<p><a href="https://atom.io">Atom</a>
+    A popular editor that I don't have personal experience with. If you want to use this, do a search for advice on how to best set it up for Python, as it doesn't do everything out of the box.</p>
+<h2 id="the-basics">The Basics</h2>
+<p><a href="https://www.amazon.com/Automate-Boring-Stuff-Python-Programming/dp/1593275994/">Automate the Boring Stuff with Python</a>
+    This covers the basics of Python in more depth than we get to in class, and provides a number of interesting projects for typical tasks, like renaming files and interacting with PDFs.</p>
+<p><a href="https://learnpython.org">learnpython.org online tutorial</a>
+    Using an embedded Python interpreter, this site takes you step by step through learning Python. It has nice features for showing you what you typed vs what was expected, asking for the answer, etc. </p>
+<h2 id="web-scraping">Web Scraping</h2>
+<p><a href="https://www.amazon.com/Web-Scraping-Python-Collecting-Modern/dp/1491910291/">Web Scraping with Python: Collecting Data from the Modern Web</a>
+    An excellent book with lots of code examples, covering the best libraries to use and techniques for getting data from websites, as well as how to set up an infrastructure for testing websites.</p>
+<h2 id="being-pythonic">Being Pythonic</h2>
+<p><a href="https://www.amazon.com/Fluent-Python-Concise-Effective-Programming/dp/1491946008/">Fluent Python</a>
+    An excellent and very readable book delving into the topics that make Python special: iterators, generators, and the like.</p>
+<h2 id="data-science">Data Science</h2>
+<p><a href="https://www.amazon.com/Python-Data-Analysis-Wrangling-IPython/dp/1491957662/">Python for Data Analysis: Data Wrangling with Pandas, NumPy, and IPython</a></p>
+<p><a href="http://jupyter.org">jupyter notebooks</a>
+    These interactive notebooks are very popular for data science. They allow you to mix discussion and code, and to run and re-run specific bits of code, such as to regenerating a graph. They also support collaboration, and run on multiple platforms and in multiple languages.</p>
+<p><a href="https://www.anaconda.com">Anaconda packages</a>
+    Some of the data science libraries are tricky to install. Anaconda solves this by providing pre-packaged libraries for all major platforms. They also include all the libraries typically used for data science.</p>
+<hr />
+<h2 id="a-note-about-python-2-vs-3">A note about Python 2 vs 3</h2>
+<p>At Apple most teams and internal libraries use Python 2, so that's what we use for the class. Python books and tutorials have switched to Python 3, so you'll need to be aware of that. You can attempt to get an older version, or you can just handle the differences.</p>
+<h3 id="print-is-a-function-in-python-3">print is a function in Python 3</h3>
+<p>The most noticable difference that will impact you is that <code>print</code> is a function, so is called with parenthesis: <code>print()</code>.</p>
+<h3 id="many-things-return-generators-or-views-rather-than-lists">Many things return generators or views rather than lists</h3>
+<p>In Python 2, lists are frequently copied and returned from dictionaries and such. This is memory-intensive, so in Python 3 built-in objects have been changed to often return a generator or a "view" onto a list instead of the list itself. The impact on you is that an object will act like a list but then not support something you expect, like getting the length of the list.</p>
+<p>If you need to treat such an object as a list, you can get a list version by calling <code>list()</code>:</p>
+<pre><code>    mylist = list(list_like_object)
+</code></pre>
+<p>Just be aware that this will take up extra memory.</p>

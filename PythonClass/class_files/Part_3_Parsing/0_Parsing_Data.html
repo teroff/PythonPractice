@@ -1,0 +1,424 @@
+<h1 id="parsing-data">Parsing Data</h1>
+<h2 id="python-for-new-programmers-part-3">Python for New Programmers, Part 3</h2>
+<p>Parsing is the process of reading data and interpreting it. We'll explore some techniques for doing this.</p>
+<hr />
+<div class="toc">
+<ul>
+<li><a href="#parsing-data">Parsing Data</a><ul>
+<li><a href="#python-for-new-programmers-part-3">Python for New Programmers, Part 3</a></li>
+<li><a href="#todays-goal-get-familiar-with-techniques-for-pulling-apart-and-understanding-data">Today's Goal: Get familiar with techniques for pulling apart and understanding data</a></li>
+<li><a href="#using-strings">Using Strings</a><ul>
+<li><a href="#strings-as-lists">Strings as lists</a></li>
+<li><a href="#strings-are-immutable">Strings are immutable</a></li>
+</ul>
+</li>
+<li><a href="#parsing-with-string-methods">Parsing with string methods</a><ul>
+<li><a href="#split-and-join-are-powerful-parsing-methods">split() and join() are powerful parsing methods</a><ul>
+<li><a href="#split-splits-a-string-into-a-list">split() splits a string into a list</a></li>
+<li><a href="#join-turns-a-list-into-a-string">join() turns a list into a string</a></li>
+<li><a href="#you-can-use-split-and-join-to-change-a-string">You can use split() and join() to 'change' a string</a></li>
+</ul>
+</li>
+<li><a href="#other-string-parsing-methods">Other string parsing methods</a><ul>
+<li><a href="#methods-for-finding-substrings">Methods for finding substrings</a></li>
+<li><a href="#string-checking-methods">String checking methods</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#string-formatting">String formatting</a><ul>
+<li><a href="#the-recommended-approach-is-the-strings-format-method">The recommended approach is the string's format() method</a><ul>
+<li><a href="#the-format-method-replaces-with-the-value-passed-as-an-argument">The format() method replaces {} with the value passed as an argument</a></li>
+<li><a href="#non-string-arguments-are-converted-to-strings">Non-string arguments are converted to strings</a></li>
+<li><a href="#you-can-insert-as-many-values-as-you-like">You can insert as many values as you like</a></li>
+</ul>
+</li>
+<li><a href="#the-string-can-be-treated-as-a-reusable-template">The string can be treated as a reusable template</a></li>
+<li><a href="#you-can-reference-the-arguments-by-index">You can reference the arguments by index</a><ul>
+<li><a href="#referencing-by-index-allows-you-to-re-use-an-argument">Referencing by index allows you to re-use an argument</a></li>
+</ul>
+</li>
+<li><a href="#other-string-formatting-methods">Other string formatting methods</a><ul>
+<li><a href="#case-changing-methods">Case changing methods</a></li>
+<li><a href="#text-justifying-methods">Text justifying methods</a></li>
+<li><a href="#padding-method-zfill">Padding method: zfill()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#list-unpacking">List Unpacking</a><ul>
+<li><a href="#list-items-are-unpacked-into-the-same-number-of-variables">List items are unpacked into the same number of variables</a></li>
+<li><a href="#you-must-have-the-same-number-of-variables-as-items-in-the-list">You must have the same number of variables as items in the list</a></li>
+</ul>
+</li>
+<li><a href="#finding-text">Finding Text</a><ul>
+<li><a href="#string-checking-methods_1">String checking methods</a></li>
+</ul>
+</li>
+<li><a href="#csv-files">CSV files</a><ul>
+<li><a href="#csvreader-reads-a-row-at-a-time">csv.reader() reads a row at a time</a><ul>
+<li><a href="#csvreader-treats-a-row-as-a-list-of-items">csv.reader() treats a row as a list of items</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<hr />
+<h2 id="todays-goal-get-familiar-with-techniques-for-pulling-apart-and-understanding-data">Today's Goal: Get familiar with techniques for pulling apart and understanding data</h2>
+<p>Last week you learned how to read in data from a file. Now that you can get data, let's figure out how to figure out what the data actually means.</p>
+<h2 id="using-strings">Using Strings</h2>
+<p>To parse data, you need to understand more about how to handle strings in Python. In most languages, handling strings is completely different from handling other data types. However, as mentioned previously, Python specializes in lists, and it likes to treat anything it can as a list. This includes, perhaps surprisingly, strings.</p>
+<p>The great thing about how Python works: Because you already know how to handle lists, that means you also already know a lot about how to handle strings. </p>
+<h3 id="strings-as-lists">Strings as lists</h3>
+<p>A string is a list of characters. Because any list can be iterated -- that is, you can go through a list from beginning to end -- you can iterate on a string, going character by character.</p>
+<p>Because a string is a list, you can use a for loop on it, which will give you each character one by one:</p>
+<pre><code>    title = "Monty Python's Flying Circus"
+    for item in title:
+        print item
+</code></pre>
+<p>This results in:</p>
+<pre><code>    M
+    o
+    n
+    t
+    y
+
+    P
+    y
+    t
+    h
+    o
+    n
+    '
+    s
+
+    F
+    l
+    y
+    i
+    n
+    g
+
+    C
+    i
+    r
+    c
+    u
+    s
+</code></pre>
+<p>And you can access the string directly as a list:</p>
+<pre><code>    print title[6]
+    print title[-1]
+    print title[6:12]
+</code></pre>
+<p>These result in:</p>
+<pre><code>    P
+    s
+    Python
+</code></pre>
+<p>You can also use 'if in' to see if a substring exists in the list:</p>
+<pre><code>    if 'Py' in title:
+        print "Let's have Py!"
+</code></pre>
+<p>This results in:</p>
+<pre><code>    Let's have Py!
+</code></pre>
+<p>And finally, because a string is a list, to get the length of a string you have to use the standalone <code>len()</code> function:</p>
+<pre><code>    print len(title)
+</code></pre>
+<p>This results in:</p>
+<pre><code>    28
+</code></pre>
+<h3 id="strings-are-immutable">Strings are immutable</h3>
+<p>Unlike standard lists, strings are immutable (that is, they can't be changed). That means that functions that appear to change strings actually return new strings.</p>
+<p>For example:</p>
+<pre><code>    greeting = "HELLO!"
+    print greeting.lower()  # This returns a new string, it doesn't change the original string.
+    print greeting
+</code></pre>
+<p>In this case, <code>greeting.lower()</code> returns a new string, but greeting itself hasn't changed:</p>
+<pre><code>    HELLO!
+    hello!
+</code></pre>
+<p>A workaround for changing a string is to assign the changed string to the original variable:</p>
+<pre><code>    greeting = greeting.lower()
+    print text
+</code></pre>
+<p>The result is assigned to the greeting variable, so as far as we're concerned, the greeting variable has been 'changed':</p>
+<pre><code>    HELLO!
+</code></pre>
+<h2 id="parsing-with-string-methods">Parsing with string methods</h2>
+<p>Many parsing tasks can be accomplished using the built-in string methods.</p>
+<h3 id="split-and-join-are-powerful-parsing-methods">split() and join() are powerful parsing methods</h3>
+<h4 id="split-splits-a-string-into-a-list">split() splits a string into a list</h4>
+<p>By default, the <code>split()</code> method splits a string on the spaces, returning a list containing the words in the string:</p>
+<pre><code>    slogan = "Python is my favorite language"
+    words = slogan.split()
+    print words
+</code></pre>
+<p>This results in:</p>
+<pre><code>    ['Python', 'is', 'my', 'favorite', 'language']
+</code></pre>
+<p>You can also pass an argument to specify what you want to split on. This is particularly useful for manipulating file paths:</p>
+<pre><code>    path = "/long/path/to/myfile.txt"
+    segments = path.split('/')
+    print "The file name is:", segments[-1]
+</code></pre>
+<p>This results in:</p>
+<pre><code>    The file name is: myfile.txt
+</code></pre>
+<h4 id="join-turns-a-list-into-a-string">join() turns a list into a string</h4>
+<p><code>join()</code> is a string method. Personally, I don't think it should be a string method (it would be more intuitive as a list method), but sometimes we're stuck with things as they are... </p>
+<p>The string you call join() on indicates what you to be the separator between items once they are joined into a string.</p>
+<p>For example, here we call <code>join()</code> on the string '-', which means we want a hyphen between each item in the list:</p>
+<pre><code>    print '-'.join(words)
+</code></pre>
+<p>This results in:</p>
+<pre><code>    Python-is-my-favorite-language
+</code></pre>
+<p>More typically, you'd join a list with a space as the string:</p>
+<pre><code>    print ' '.join(words)
+</code></pre>
+<p>This results in:</p>
+<pre><code>    Python is my favorite language
+</code></pre>
+<h4 id="you-can-use-split-and-join-to-change-a-string">You can use split() and join() to 'change' a string</h4>
+<p>You can't change a string, but you can change a list. So another way to effectively 'change' a string is to turn it into a list, change items in the list, then turn the list back into a string.</p>
+<p>For example, given the list of words created from the string, we can change one of the words in the list, then join the list into a string:</p>
+<pre><code>    words[2] = "everyone's"
+    slogan = ' '.join(words)
+    print slogan
+</code></pre>
+<p>This results in:</p>
+<pre><code>    Python is everyone's favorite language
+</code></pre>
+<h3 id="other-string-parsing-methods">Other string parsing methods</h3>
+<p>Here are other string methods that are helpful for parsing. For each, the comment shows the result of using that method.</p>
+<h4 id="methods-for-finding-substrings">Methods for finding substrings</h4>
+<p>Warning, the <code>count()</code> method does <strong>not</strong> return the string size!</p>
+<pre><code>    'parrot'.count('r')         # 2
+
+    'parrot'.endswith('t')      # True
+
+    'parrot'.startswith('t')    # False
+</code></pre>
+<p><code>find()</code> and <code>rfind()</code> return -1 if nothing found.</p>
+<pre><code>    'find first'.find('i')      # 1
+
+    'locate last'.rfind('l')    # 7
+</code></pre>
+<h4 id="string-checking-methods">String checking methods</h4>
+<pre><code>    'alphanumeric42'.isalnum()      # True
+
+    'alphabetic'.isalpha()          # True
+
+    '42'.isdigit()                  # True
+
+    ' \t\r\n'.isspace()             # True
+
+    'All Capitalized'.istitle()     # True
+
+    'ALL UPPERCASE'.isupper()       # True
+
+    'before|after'.partition('|')   # ('before', '|', 'after')
+
+    'first|first last|last'.rpartition('|')     # ('first|first last', '|', 'last')
+
+    'parrot asleep'.replace('asleep', 'deceased')   # parrot deceased
+
+    'first\nsecond\nthird'.splitlines() # ['first', 'second', 'third']
+</code></pre>
+<p>translate() is for completely swapping the ASCII character set (all 256 characters) with other characters. You can do that if you want but I’m not bothering here.</p>
+<p>More useful is the optional second argument to translate(), letting you delete characters (pass None for the first argument to skip the ASCII replacement behavior):</p>
+<pre><code>    del_chars = ' ?'
+    'Camel Case Is Annoying?'.translate(None, del_chars)    # CamelCaseIsAnnoying
+</code></pre>
+<h2 id="string-formatting">String formatting</h2>
+<p>You’ve seen that you can construct strings by adding them together. Adding strings is a slow operation, and not recommended if you are constructing many strings at a time.</p>
+<p>There are multiple ways to format a string. While many people continue to use the % operator for string formatting, it's a deprecated approach (see <a href="https://docs.python.org/3/library/stdtypes.html#old-string-formatting">Python 3 old string formatting docs</a> and not taught in this class.</p>
+<h3 id="the-recommended-approach-is-the-strings-format-method">The recommended approach is the string's format() method</h3>
+<p>The format() method is fast, robust, and readable.</p>
+<p>The simplest approach is to use the format() method to interpolate values. Wherever you want a value inserted into the string, you put curly braces: {}.</p>
+<h4 id="the-format-method-replaces-with-the-value-passed-as-an-argument">The format() method replaces {} with the value passed as an argument</h4>
+<p>For example, in this case we want the current player's name inserted into the string:</p>
+<pre><code>    print "{} is the current player".format("Susan")
+</code></pre>
+<p>The format method replaces the {} with the value passed as an argument. In this case, the argument "Susan" is inserted into the string:</p>
+<pre><code>    Susan is the current player
+</code></pre>
+<h4 id="non-string-arguments-are-converted-to-strings">Non-string arguments are converted to strings</h4>
+<p>The format() method turns any non-string argument into a string for you. For example, in this case we pass a number as an argument:</p>
+<pre><code>    print "Current player has {} points".format(10)
+</code></pre>
+<p>This results in:</p>
+<pre><code>    Current player has 10 points
+</code></pre>
+<h4 id="you-can-insert-as-many-values-as-you-like">You can insert as many values as you like</h4>
+<p>Often you'll want to insert multiple values into a string. You can simply pass multiple arguments to format() and by default it will insert them in order:</p>
+<pre><code>    print "{} is the current player with {} points".format("Susan", 10)
+</code></pre>
+<p>This results in:</p>
+<pre><code>    Susan is the current player with 10 points
+</code></pre>
+<h3 id="the-string-can-be-treated-as-a-reusable-template">The string can be treated as a reusable template</h3>
+<p>Basic string construction is very useful and you may usually use format() that way. If you think of the string in this case as a template, format() can become even more powerful.</p>
+<p>Remember that since strings are immutable, the format method returns a new version of the string, leaving the original template as-is. Knowing this, you can use a format string as a template to generate other strings, like so:</p>
+<pre><code>    template = "The {} brown fox jumps over the {} dog"
+    first = template.format("careless", "ambivalent")
+    second = template.format("bad", "delighted")
+    print first
+    print second
+</code></pre>
+<p>This results in:</p>
+<pre><code>    The careless brown fox jumps over the ambivalent dog
+    The bad brown fox jumps over the delighted dog
+</code></pre>
+<h3 id="you-can-reference-the-arguments-by-index">You can reference the arguments by index</h3>
+<p>The default is to use the arguments in the order they are listed, but you can choose to reference the arguments by their index (starts with 0) for the arguments, like so:</p>
+<pre><code>    template = "The {1} brown fox jumps over the {0} dog"
+    first = template.format("lazy", "quick")
+    print first
+</code></pre>
+<p>This results in:</p>
+<pre><code>    The quick brown fox jumps over the lazy dog
+</code></pre>
+<h4 id="referencing-by-index-allows-you-to-re-use-an-argument">Referencing by index allows you to re-use an argument</h4>
+<p>If you have more sets of curly braces in the string than arguments provided, you get an error:</p>
+<pre><code>    template = "The {} brown fox jumps over the {} dog"
+    first = template.format("lazy")
+    print first
+</code></pre>
+<p>This results in:</p>
+<pre><code>    IndexError: tuple index out of range
+</code></pre>
+<p>To avoid this, you can specify the index:</p>
+<pre><code>    template = "The {0} brown fox jumps over the {0} dog"
+    first = template.format("lazy")
+    print first
+</code></pre>
+<p>This results in:</p>
+<pre><code>    The lazy brown fox jumps over the lazy dog
+</code></pre>
+<h3 id="other-string-formatting-methods">Other string formatting methods</h3>
+<p>Here are other string methods that are helpful for formatting. For each, the comment shows the result of using that method.</p>
+<h4 id="case-changing-methods">Case changing methods</h4>
+<pre><code>    'parrot'.capitalize()           # Parrot
+
+    'PARROT'.lower()                # parrot
+
+    'Parrot'.swapcase()             # pARROT
+
+    'parrot is deceased'.title()    # Parrot Is Deceased
+
+    'parrot'.upper()                # PARROT
+</code></pre>
+<h4 id="text-justifying-methods">Text justifying methods</h4>
+<pre><code>    '|' + 'parrot'.center(10) + '|' # |  parrot  |
+
+    '|' + 'parrot'.ljust(10) + '|'  # |parrot    |
+
+    '|' + 'parrot'.rjust(10) + '|'  # |    parrot|
+</code></pre>
+<p>These methods have an optional argument to use a character other than space for the justification:</p>
+<pre><code>    'parrot'.rjust(10, '-')         # ----parrot
+</code></pre>
+<h4 id="padding-method-zfill">Padding method: zfill()</h4>
+<pre><code>    '11'.zfill(10)                  # 0000000011
+</code></pre>
+<h2 id="list-unpacking">List Unpacking</h2>
+<p>Python has a unique list feature that at first might seem odd, but that turns out to be extremely useful. In Python you can <em>unpack</em> a list into variables.</p>
+<p>What does that mean? Here is a small list of animals:</p>
+<pre><code>    animals = ['cat', 'frog', 'bird']
+</code></pre>
+<p>In this case we've created a list and assigned it to one variable, called <em>animals</em>. When you assign a list to a single variable, the entire list object is assigned to the variable.</p>
+<p>However, Python also allows us to provide multiple variables, like so:</p>
+<pre><code>    first, second, third = ['cat', 'frog', 'bird']
+</code></pre>
+<h4 id="list-items-are-unpacked-into-the-same-number-of-variables">List items are unpacked into the same number of variables</h4>
+<p>When you assign a list to the <em>same number of variables as there are items in the list</em>, Python unpacks the list items into the variables. Then you can use the variables like so:</p>
+<pre><code>    print first
+    print second
+    print third
+</code></pre>
+<p>This results in:</p>
+<pre><code>    cat
+    frog
+    bird
+</code></pre>
+<h4 id="you-must-have-the-same-number-of-variables-as-items-in-the-list">You must have the same number of variables as items in the list</h4>
+<p>The only options are assigning a list to one variable:</p>
+<pre><code>    animals = ['cat', 'frog', 'bird']
+</code></pre>
+<p>Or the same number of variables as items in the list:</p>
+<pre><code>    first, second, third = animals
+</code></pre>
+<p>If you try any other number of variables, you get an error:</p>
+<pre><code>    first, second = animals
+</code></pre>
+<p>This results in:</p>
+<pre><code>    ValueError: too many values to unpack
+</code></pre>
+<hr />
+<h2 id="finding-text">Finding Text</h2>
+<p>There are a number of string methods you can use to find text in the string.</p>
+<p>Warning, the count() method does <strong>not</strong> return the string size!</p>
+<pre><code>    'parrot'.count('r')         # 2
+
+    'parrot'.endswith('t')      # True
+
+    'parrot'.startswith('t')    # False
+</code></pre>
+<p>find() and rfind() return -1 if nothing found.</p>
+<pre><code>    'find first'.find('i')      # 1
+
+    'locate last'.rfind('l')    # 7
+</code></pre>
+<h4 id="string-checking-methods_1">String checking methods</h4>
+<pre><code>    'alphanumeric42'.isalnum()      # True
+
+    'alphabetic'.isalpha()          # True
+
+    '42'.isdigit()                  # True
+
+    ' \t\r\n'.isspace()             # True
+
+    'All Capitalized'.istitle()     # True
+
+    'ALL UPPERCASE'.isupper()       # True
+
+    'before|after'.partition('|')   # ('before', '|', 'after')
+
+    'first|first last|last'.rpartition('|')     # ('first|first last', '|', 'last')
+
+    'parrot asleep'.replace('asleep', 'deceased')   # parrot deceased
+
+    'first\nsecond\nthird'.splitlines() # ['first', 'second', 'third']
+</code></pre>
+<h2 id="csv-files">CSV files</h2>
+<p>Spreadsheets can be output in the CSV (<em>comma-separated values</em>) file format, and it's quite common that data is passed around and processed in CSV form. There's an excellent built-in module for reading and writing CSV files called, naturally enough, <code>csv</code>.</p>
+<h3 id="csvreader-reads-a-row-at-a-time">csv.reader() reads a row at a time</h3>
+<p>One way to read CSV files is using the <code>csv</code> module's <code>reader()</code> method. In a for loop this acts like <code>open()</code>, reading one row of the file at a time.</p>
+<p><code>csv.reader()</code> takes the file object as a required argument:</p>
+<pre><code>    for row in csv.reader(open('us_stores.csv')):
+        print row
+</code></pre>
+<h4 id="csvreader-treats-a-row-as-a-list-of-items">csv.reader() treats a row as a list of items</h4>
+<p>The <code>reader()</code> method returns a list with each entry on the row as an item in the list. The result of the above is something like:</p>
+<pre><code>    ['Mississippi', 'Ridgeland', ' Renaissance at Colony Park']
+    ['Oklahoma', 'Oklahoma City', 'Penn Square']
+    ...
+</code></pre>
+<p>If we just wanted to print each state (the first entry on each line) we can do this:</p>
+<pre><code>    for row in csv.reader(open('us_stores.csv')):
+        print row[0]
+</code></pre>
+<p>Which results in:</p>
+<pre><code>    Mississipi
+    Oklahoma
+    Oklahoma
+    Delaware
+    ...
+</code></pre>

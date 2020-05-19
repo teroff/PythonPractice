@@ -1,0 +1,24 @@
+Australia: 22
+Austria: 1
+Belgium: 1
+Brazil: 2
+Canada: 29
+China: 41
+France: 20
+Germany: 15
+Hong Kong: 6
+Italy: 16
+Japan: 7
+Macao: 1
+Mexico: 1
+Netherlands: 3
+Singapore: 1
+South Korea: 1
+Spain: 11
+Sweden: 3
+Switzerland: 4
+Taiwan: 1
+Turkey: 2
+United Arab Emirates: 3
+United Kingdom: 38
+United States: 272

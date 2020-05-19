@@ -1,0 +1,226 @@
+<h1 id="scripting">Scripting</h1>
+<h2 id="python-for-new-programmers-part-2">Python for New Programmers, Part 2</h2>
+<p>In the last session, you learned about the basic elements of programming, using the Python interpretor. In the interpretor you have to enter code from scratch every time, which is fine for learning but not good for creating actual functionality to accomplish your task.</p>
+<p>Scripts let you create code that can be run as often as you like without having to re-enter the code. From here on out we'll do all our work in scripts.</p>
+<hr />
+<div class="toc">
+<ul>
+<li><a href="#scripting">Scripting</a><ul>
+<li><a href="#python-for-new-programmers-part-2">Python for New Programmers, Part 2</a></li>
+<li><a href="#todays-goal-be-comfortable-writing-and-running-basic-python-scripts">Today's Goal: Be comfortable writing and running basic Python scripts</a></li>
+<li><a href="#choosing-a-text-editor">Choosing a text editor</a><ul>
+<li><a href="#sublime-text-my-favorite">Sublime Text: my favorite</a></li>
+<li><a href="#bbedittextwrangler">BBEdit/TextWrangler</a></li>
+<li><a href="#other-editors">Other editors</a></li>
+</ul>
+</li>
+<li><a href="#useful-facts-about-scripts">Useful facts about scripts</a><ul>
+<li><a href="#a-python-script-must-use-a-py-extension">A Python script must use a .py extension</a></li>
+<li><a href="#python-reads-a-script-from-the-top-one-line-at-a-time-all-the-way-through">Python reads a script from the top, one line at a time, all the way through</a></li>
+<li><a href="#the-hash-sign-starts-a-single-line-comment">The hash sign # starts a single line comment</a></li>
+<li><a href="#use-three-quotes-for-a-multi-line-comment">Use three quotes for a multi-line comment</a></li>
+</ul>
+</li>
+<li><a href="#import">import</a><ul>
+<li><a href="#import-uses-the-file-name-but-not-the-extension">import uses the file name but not the extension</a></li>
+<li><a href="#import-looks-in-your-code-directory-then-in-the-python-directories">import looks in your code directory, then in the Python directories</a></li>
+<li><a href="#an-imported-module-is-treated-as-an-object">An imported module is treated as an object</a></li>
+</ul>
+</li>
+<li><a href="#files">Files</a><ul>
+<li><a href="#all-file-operations-use-the-open-function">All file operations use the open() function</a><ul>
+<li><a href="#the-file_path-is-relative-to-your-code-directory">The file_path is relative to your code directory</a></li>
+<li><a href="#the-file_mode-indicates-what-you-plan-to-do-with-the-file">The file_mode indicates what you plan to do with the file</a></li>
+<li><a href="#you-must-close-a-file-when-you-are-done-with-it">You must close() a file when you are done with it</a></li>
+</ul>
+</li>
+<li><a href="#file-modes">File modes</a><ul>
+<li><a href="#r-read-mode">'r': read mode</a></li>
+<li><a href="#w-write-mode">'w': write mode</a></li>
+<li><a href="#a-append-mode">'a': append mode</a></li>
+</ul>
+</li>
+<li><a href="#use-a-for-loop-to-read-a-file-one-line-at-a-time">Use a for loop to read a file one line at a time</a><ul>
+<li><a href="#a-for-loop-closes-the-file-for-you">A for loop closes the file for you</a></li>
+<li><a href="#use-the-strings-rstrip-method-to-remove-the-newline-at-the-end-of-the-line">Use the string's rstrip() method to remove the newline at the end of the line</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#end-of-session-2">End of session 2!</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr />
+<h2 id="todays-goal-be-comfortable-writing-and-running-basic-python-scripts">Today's Goal: Be comfortable writing and running basic Python scripts</h2>
+<p>We'll make sure everyone is set up and comfortable with using a text editor and running scripts, then we'll spend some time creating scripts that make use of the concepts we learned in Part 1.</p>
+<h2 id="choosing-a-text-editor">Choosing a text editor</h2>
+<p>To edit scripts you need to choose a text editor. Most text editors will work fine (amusingly, the built-in TextEdit app will <strong>not</strong> work for creating scripts).</p>
+<h3 id="sublime-text-my-favorite">Sublime Text: my favorite</h3>
+<p>I like to use Sublime Text for all my coding, and especially for the class. It has great Python integration and, best of all, shows the results of scripts right in the editor, without requiring you to look at another window to see what happened.</p>
+<p>Sublime Text is a commercial app, not available in the app store. You can download it at <a href="https://www.sublimetext.com">the Sublime Text website</a>. While the app does cost if you want to use it long-term, you can use it in trial mode for the class without needing to pay. If you like the app, I encourage you to buy it later.</p>
+<p>In Sublime Text, you can use Command-B to run your script. The first time you do this you may get a menu like this:</p>
+<pre><code>    Python
+    Python Syntax Check
+</code></pre>
+<p>If you get that, choose Python! (If you accidentally choose the syntax check you'll find that the script doesn't run when you do Command-B -- in that case, please let me know and I'll fix it for you.)</p>
+<h3 id="bbedittextwrangler">BBEdit/TextWrangler</h3>
+<p>Many people like to use BBEdit or the free version, TextWrangler. BBEdit is a commercial app, but is available for free on the <a href="https://istweb.apple.com/bbedit/">internal software website</a>.</p>
+<p>In BBEdit/TextWrangler, you can run a script using the #! menu: #!-&gt;Run</p>
+<p>This will bring up a separate window to show the results.</p>
+<h3 id="other-editors">Other editors</h3>
+<p>You can use any other editor you like. Depending on the editor it may or may not be able to execute Python scripts directly.</p>
+<p>If the editor doesn't know how to run a Python script, you can use the editor, save your work, then run the script from the Terminal command-line. To set this up:</p>
+<ol>
+<li>In the Finder, select the <em>PythonforNewProgrammers/class_files</em> folder and use Command-C to copy the path.</li>
+<li>Open Terminal.</li>
+<li>Change to the Class Files directory by using the <em>cd</em> command and pasting in the path:
+        cd <Command-V to paste the path></li>
+<li>Hit Return to execute the cd command.</li>
+</ol>
+<p>After this, whenever you want to run a script, save the file and then in Terminal call Python with the script name, like so:</p>
+<pre><code>    python &lt;script name&gt;
+</code></pre>
+<p>You'll see the results right there in the Terminal window.</p>
+<h2 id="useful-facts-about-scripts">Useful facts about scripts</h2>
+<p>Here are a few things you should know about writing Python scripts.</p>
+<h3 id="a-python-script-must-use-a-py-extension">A Python script must use a .py extension</h3>
+<p>You can't choose an arbitrary extension for a Python script. It needs to use <em>.py</em> to be fully functional.</p>
+<h3 id="python-reads-a-script-from-the-top-one-line-at-a-time-all-the-way-through">Python reads a script from the top, one line at a time, all the way through</h3>
+<p>When you run a Python script, Python starts at the top and goes one line at a time, until it reaches the end.</p>
+<p>There's no way to execute just one line, or just the selected lines. Python will always run the entire script.</p>
+<p>Some specialized development environments may allow you to execute just selected lines, but text editors do not.</p>
+<h3 id="the-hash-sign-starts-a-single-line-comment">The hash sign # starts a single line comment</h3>
+<p>Anytime Python sees the hash sign -- # -- it ignores the rest of the line. This allows you to comment your code.</p>
+<p>A hash sign can be at the start of the line, in which case the entire line is a comment:</p>
+<pre><code>    # This entire line is a comment.
+</code></pre>
+<p>Or you can use the hash sign after some code, in which case the rest of the line is a comment:</p>
+<pre><code>    print "My script works!"    # This part of the line is a comment and is ignored.
+</code></pre>
+<h3 id="use-three-quotes-for-a-multi-line-comment">Use three quotes for a multi-line comment</h3>
+<p>If you want more than one line in your comment, you can use a <em>three quote comment</em>, by starting and ending the comment with three single or double quotes, like so:</p>
+<pre><code>    ''' This is a multi-line comment.
+    It doesn't end until
+    the ending three quotes. '''
+</code></pre>
+<p>Three quote comments allow you to provide more in-depth comments without having hash signs at the beginning of every line.</p>
+<h2 id="import">import</h2>
+<p>The <em>import</em> statement lets you read in code and use it. A Python file designed to be imported is called a <em>module</em> or a <em>library</em>.</p>
+<p>While Python provides a number of built-in functions and objects, it also provides a large number of modules you have to import to use. It does this because it would take up memory if that code were built-in, and you probably won't need to use most of those modules in any particular script. So you need to import them when you need that functionality.</p>
+<p>There are also third-party modules you can install and import, and you can even import your own code. We'll go over that in the last session.</p>
+<h3 id="import-uses-the-file-name-but-not-the-extension">import uses the file name but not the extension</h3>
+<p>When you import a file, you just reference the main filename, not the file extension, like so:</p>
+<pre><code>    import math
+</code></pre>
+<p>If you add the .py extension you'll get an error:</p>
+<pre><code>    ImportError: No module named py
+</code></pre>
+<h3 id="import-looks-in-your-code-directory-then-in-the-python-directories">import looks in your code directory, then in the Python directories</h3>
+<p>When you import a module, Python looks for the file first in your code directory. If it doesn't find it there, it then looks in a number of different directories across the system where modules are stored until it finds a .py file with that name.</p>
+<h3 id="an-imported-module-is-treated-as-an-object">An imported module is treated as an object</h3>
+<p>When you import a module, the module gets turned into an object. You can then treat it like any other object, including using <code>type()</code>, <code>dir()</code>, and <code>help()</code>. For example:</p>
+<pre><code>    import math
+    print type(math)
+</code></pre>
+<p>Results in:</p>
+<pre><code>    &lt;type 'module'&gt;
+</code></pre>
+<p>Variables in the module are turned into attributes, and functions are turned into methods. So you access them like so:</p>
+<pre><code>    print math.pi
+</code></pre>
+<p>Which results in:</p>
+<pre><code>    3.14159265359
+</code></pre>
+<p>And you call a method just like with any other object:</p>
+<pre><code>    print math.trunc(3.14159265359)
+</code></pre>
+<p>Which results in:</p>
+<pre><code>    3
+</code></pre>
+<p>For fun, try importing the 'this' and 'antigravity' modules...</p>
+<hr />
+<h2 id="files">Files</h2>
+<p>Almost all programming involves reading in data, processing the data, and producing some kind of output. Everything we learn in the class from this point on will be about that process. The starting point, then, is reading in data, which often involves files. You can also read in data from databases, websites, etc. We'll focus on files for the class; once you've learned about files, you'll find it pretty easy to learn how to read data from other sources.</p>
+<h3 id="all-file-operations-use-the-open-function">All file operations use the open() function</h3>
+<p>Whether you are reading or writing files, you use the <code>open()</code> function. The <code>open()</code> function takes two arguments and returns a file object:</p>
+<pre><code>    myfile = open(file_path, file_mode)
+</code></pre>
+<p>The file_path is a string. </p>
+<h4 id="the-file_path-is-relative-to-your-code-directory">The file_path is relative to your code directory</h4>
+<p>If the file_path is a relative path, it's relative to your code directory. So if you just provide a filename, the <code>open()</code> function looks for that file in your code directory.</p>
+<h4 id="the-file_mode-indicates-what-you-plan-to-do-with-the-file">The file_mode indicates what you plan to do with the file</h4>
+<p>The file mode is a string that indicates what you plan to do with the file. Various file modes are discussed below.</p>
+<h4 id="you-must-close-a-file-when-you-are-done-with-it">You must close() a file when you are done with it</h4>
+<p>The file's <code>close()</code> method cleans things up when you are done with the file. It's very important to call <code>close()</code> when you are done using a file:</p>
+<pre><code>    myfile.close()
+</code></pre>
+<h3 id="file-modes">File modes</h3>
+<p>There are many file modes; the most commonly used are:</p>
+<pre><code>    'r': read
+    'w': write
+    'a': append
+</code></pre>
+<p>The mode you specify determines what you'll be able to do with the file object.</p>
+<h4 id="r-read-mode">'r': read mode</h4>
+<p>The read mode is the simplest. It just lets you read the file. If the file doesn't exist, you get an error like so:</p>
+<pre><code>    IOError: [Errno 2] No such file or directory: 'bogus.txt'
+</code></pre>
+<p>Read mode gives you access to various methods for reading. The simplest is the <code>read()</code> method, which returns the entire contents of the file as a string:</p>
+<pre><code>    myfile = open('products.txt', 'r')
+    print myfile.read()
+    myfile.close()
+</code></pre>
+<p>This results in:</p>
+<pre><code>    HomePod
+    iPhone X
+    AirPods
+    MacBook Pro
+</code></pre>
+<h4 id="w-write-mode">'w': write mode</h4>
+<p>The write mode triggers a number of things:</p>
+<ol>
+<li>If the file doesn't exist, it is created.</li>
+<li>If the file does exist, the contents are erased (so don't use write mode if you don't want to erase the file!)</li>
+<li>The file is locked, so no one else can read it while you are changing it.</li>
+<li>You get access to various writing methods.</li>
+</ol>
+<p>The simplest writing method is <code>write()</code>, which writes text to the end of the file. If you want a new line in a file, you need to use the '\n' newline character.</p>
+<pre><code>    myfile = open('newstuff.txt', 'w')
+    myfile.write("Here is some new stuff.\n")
+    myfile.close()
+</code></pre>
+<h4 id="a-append-mode">'a': append mode</h4>
+<p>The append mode is similar to write mode, except it doesn't erase the contents of the file if it already exists. Instead, anything you <code>write()</code> will be added to the end of any existing content.</p>
+<pre><code>    myfile = open('newstuff.txt', 'a')
+    myfile.write("Here is some more stuff.\n")
+    myfile.close()
+</code></pre>
+<h3 id="use-a-for-loop-to-read-a-file-one-line-at-a-time">Use a for loop to read a file one line at a time</h3>
+<p>One potential problem with using the <code>read()</code> method is that you may be reading in a very large file, which could be large enough to crash the script. Only use <code>read()</code> if you know you'll only be reading reasonably sized files.</p>
+<p>If you can't be sure how big the file will be, then the best approach is to read the file one line at a time. You can use a for loop for this, like so:</p>
+<pre><code>    for line in open('newstuff.txt'):
+        print line
+</code></pre>
+<p>The for loop reads one line of text from the file, runs the code block, then reads in the next line and forgets the previous one. This means only one line of text is in memory at any time, so you can go through a file no matter how large it is.</p>
+<h4 id="a-for-loop-closes-the-file-for-you">A for loop closes the file for you</h4>
+<p>Notice that in this case I didn't <code>close()</code> the file. When you open a file as part of a for loop, the for loop closes the file for you when it's done.</p>
+<p>That for loop results in:</p>
+<pre><code>    Here is some new stuff.
+
+    Here is some more stuff.
+</code></pre>
+<p>Notice that there's an extra blank line showing up. Where is that coming from?</p>
+<h4 id="use-the-strings-rstrip-method-to-remove-the-newline-at-the-end-of-the-line">Use the string's rstrip() method to remove the newline at the end of the line</h4>
+<p>The carriage return at the end of a line is included when you read in the line. And then the print statement automatically adds a line to anything it prints, resulting in an extra blank line.</p>
+<p>The string object has several methods for removing whitespace from a line (whitespace is any newline, space, tab, etc.) The <code>strip()</code> method removes whitespace from both sides of the string; the <code>lstrip()</code> method removes whitespace from the left side of the string; the <code>rstrip()</code> method removes whitespace from the right side of the string. So for left-to-right languages, use <code>rstrip()</code> to get rid of the newline, like so:</p>
+<pre><code>    for line in open('newstuff.txt'):
+        print line.rstrip()
+</code></pre>
+<p>That results in:</p>
+<pre><code>    Here is some new stuff.
+    Here is some more stuff.
+</code></pre>
+<h2 id="end-of-session-2">End of session 2!</h2>
+<p>Now that you know how to read in data from files, you can create some very useful scripts. We'll explore that more in the next session.</p>

@@ -1,0 +1,238 @@
+<h1 id="reporting">Reporting</h1>
+<h2 id="python-for-new-programmers-part-4">Python for New Programmers, Part 4</h2>
+<p>Once you have data to work with, you need to process that data in some way and produce a result. </p>
+<hr />
+<div class="toc">
+<ul>
+<li><a href="#reporting">Reporting</a><ul>
+<li><a href="#python-for-new-programmers-part-4">Python for New Programmers, Part 4</a></li>
+<li><a href="#sorting">Sorting</a><ul>
+<li><a href="#the-sort-method-changes-the-order-of-the-list-itself">The sort() method changes the order of the list itself</a></li>
+<li><a href="#sorted-returns-a-sorted-copy-of-the-list">sorted() returns a sorted copy of the list</a></li>
+<li><a href="#reverse-sorting">Reverse sorting</a></li>
+</ul>
+</li>
+<li><a href="#dictionaries">Dictionaries</a><ul>
+<li><a href="#what-is-a-dictionary">What is a dictionary?</a><ul>
+<li><a href="#a-dictionary-entry-contains-a-key-and-an-associated-value">A dictionary entry contains a key and an associated value</a></li>
+<li><a href="#a-dictionary-is-a-kind-of-list">A dictionary is a kind of list</a></li>
+<li><a href="#when-treated-as-a-list-a-dictionary-uses-its-list-of-keys">When treated as a list, a dictionary uses its list of keys</a></li>
+</ul>
+</li>
+<li><a href="#creating-a-dictionary">Creating a dictionary</a><ul>
+<li><a href="#curly-braces-create-an-empty-dictionary">Curly braces create an empty dictionary</a></li>
+<li><a href="#add-an-entry-by-assigning-a-value-to-a-key">Add an entry by assigning a value to a key</a></li>
+<li><a href="#create-a-dictionary-from-scratch-using-comma-separated-keys-and-values">Create a dictionary from scratch using comma-separated keys and values</a></li>
+</ul>
+</li>
+<li><a href="#accessing-a-dictionary">Accessing a dictionary</a><ul>
+<li><a href="#access-a-value-using-the-key-as-the-index">Access a value using the key as the index</a></li>
+<li><a href="#assigning-a-new-value-to-the-same-key-replaces-the-previous-value">Assigning a new value to the same key replaces the previous value</a></li>
+<li><a href="#using-a-key-that-doesnt-exist-results-in-an-error">Using a key that doesn't exist results in an error</a></li>
+<li><a href="#use-if-in-to-check-for-a-key-before-using-it">Use 'if in' to check for a key before using it</a></li>
+<li><a href="#use-a-for-loop-to-iterate-through-a-dictionary">Use a for loop to iterate through a dictionary</a></li>
+<li><a href="#use-the-items-method-to-get-the-key-and-value-at-the-same-time">Use the items() method to get the key and value at the same time</a></li>
+</ul>
+</li>
+<li><a href="#why-a-dictionary-is-fast">Why a dictionary is fast</a><ul>
+<li><a href="#a-dictionary-always-takes-the-same-amount-of-time-to-find-any-item">A dictionary always takes the same amount of time to find any item</a></li>
+<li><a href="#a-key-is-hashed-into-a-unique-number">A key is hashed into a unique number</a></li>
+<li><a href="#the-value-is-stored-in-the-numerical-slot-indicated-by-the-keys-hash-value">The value is stored in the numerical slot indicated by the key's hash value</a></li>
+<li><a href="#the-only-time-taken-is-the-time-it-takes-to-run-the-hashing-algorithm">The only time taken is the time it takes to run the hashing algorithm</a></li>
+<li><a href="#keys-are-not-alphabetical-because-they-are-stored-in-the-order-of-the-hash-values">Keys are not alphabetical because they are stored in the order of the hash values</a></li>
+<li><a href="#never-write-code-that-relies-on-the-order-of-items-in-a-dictionary">Never write code that relies on the order of items in a dictionary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<hr />
+<h2 id="sorting">Sorting</h2>
+<p>By default, Python sorts alpha-numerically.</p>
+<p>The first question when sorting a list is whether you want to change the list itself, or you want a copy of the list that is sorted.</p>
+<h3 id="the-sort-method-changes-the-order-of-the-list-itself">The sort() method changes the order of the list itself</h3>
+<p>To change a list to be in sorted order, you simply call the list's sort() method. </p>
+<pre><code>    animals = ['zebra', 'dog', 'cow']
+    animals.sort()
+    print animals
+</code></pre>
+<p>This results in:</p>
+<pre><code>    ['cow', 'dog', 'zebra']
+</code></pre>
+<h3 id="sorted-returns-a-sorted-copy-of-the-list">sorted() returns a sorted copy of the list</h3>
+<p>If you need a sorted version of a list but you don't want to change the list itself, for example when someone passes a list to your function and you want to sort it but don't want to change their list, you can use sorted(). This is a standalone function that acts exactly like sort() but it returns a copy of the list.</p>
+<pre><code>    animals = ['zebra', 'cow', 'dog']
+    print sorted(animals)
+</code></pre>
+<p>This results in:</p>
+<pre><code>    ['cow', 'dog', 'zebra']
+</code></pre>
+<p>But the original list hasn't changed:</p>
+<pre><code>    print animals
+</code></pre>
+<p>This results in:</p>
+<pre><code>    ['zebra', 'cow', 'dog']
+</code></pre>
+<h3 id="reverse-sorting">Reverse sorting</h3>
+<p>The sort() method and the standalone sorted() function both take a <em>reverse</em> argument. If you set <em>reverse</em> to <em>True</em>, the sort will be reversed:</p>
+<pre><code>    print sorted(animals, reverse = True)
+</code></pre>
+<p>This results in:</p>
+<pre><code>    ['zebra', 'dog', 'cow']
+</code></pre>
+<hr />
+<h2 id="dictionaries">Dictionaries</h2>
+<p>Dictionaries provide a way to store a key and an associated value, and they allow for very fast lookup of information. In some languages they are called 'hashmaps' or 'associated lists'.</p>
+<h3 id="what-is-a-dictionary">What is a dictionary?</h3>
+<h4 id="a-dictionary-entry-contains-a-key-and-an-associated-value">A dictionary entry contains a key and an associated value</h4>
+<p>When you look at an entry in a normal dictionary, you find a term and an associated definition. In programming, a dictionary entry has a <em>key</em> and an associated <em>value</em>, also known as a <em>key-value pair</em>.</p>
+<p>Keys are usually strings, but can be any kind of object that supports being used as a key (that is, the object must be <em>hashable</em>, which is explained below).</p>
+<h4 id="a-dictionary-is-a-kind-of-list">A dictionary is a kind of list</h4>
+<p>Dictionaries are lists, and adopt much of the list behavior. However, unlike basic lists, dictionaries are considered <em>unordered</em> -- effectively, the entries in a dictionary are in random order. The details of this will be explained below.</p>
+<h4 id="when-treated-as-a-list-a-dictionary-uses-its-list-of-keys">When treated as a list, a dictionary uses its list of keys</h4>
+<p>Anytime you use a dictionary in a context where a list is expected, the dictionary provides a list of its keys. You'll see examples of this below.</p>
+<h3 id="creating-a-dictionary">Creating a dictionary</h3>
+<h4 id="curly-braces-create-an-empty-dictionary">Curly braces create an empty dictionary</h4>
+<p>The most common way to create a dictionary is using curly braces. This creates an empty dictionary:</p>
+<pre><code>    appledir = {}
+</code></pre>
+<p>Use dir() to see what attributes and methods a dictionary has:</p>
+<pre><code>    print dir(appledir)
+</code></pre>
+<p>This results in:</p>
+<pre><code>    ['__class__', '__cmp__', '__contains__', '__delattr__', '__delitem__', '__doc__', '__eq__', 
+    '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__init__', 
+    '__iter__', '__le__', '__len__', '__lt__', '__ne__', '__new__', '__reduce__', 
+    '__reduce_ex__', '__repr__', '__setattr__', '__setitem__', '__sizeof__', '__str__', 
+    '__subclasshook__', 'clear', 'copy', 'fromkeys', 'get', 'has_key', 'items', 'iteritems', 
+    'iterkeys', 'itervalues', 'keys', 'pop', 'popitem', 'setdefault', 'update', 'values', 
+    'viewitems', 'viewkeys', 'viewvalues']
+</code></pre>
+<h4 id="add-an-entry-by-assigning-a-value-to-a-key">Add an entry by assigning a value to a key</h4>
+<p>Unlike lists where you need to use the append() method to add an item to the list, for dictionaries you simply assign a value to a key, like this:</p>
+<pre><code>    appledir['Tim'] = 'CEO'
+</code></pre>
+<p>That sets the key 'Tim' to have the value 'CEO'. Print the dictionary to see the entry:</p>
+<pre><code>    print appledir
+</code></pre>
+<p>This results in:</p>
+<pre><code>    {'Tim': 'CEO'}
+</code></pre>
+<p>The key and value are shown separated by a colon.</p>
+<h4 id="create-a-dictionary-from-scratch-using-comma-separated-keys-and-values">Create a dictionary from scratch using comma-separated keys and values</h4>
+<p>This creates a list with two entries:</p>
+<pre><code>    appledir = {'Tim': 'CEO', 'Angela': 'Retail'}
+</code></pre>
+<h3 id="accessing-a-dictionary">Accessing a dictionary</h3>
+<h4 id="access-a-value-using-the-key-as-the-index">Access a value using the key as the index</h4>
+<p>As with a basic list, you can index into a dictionary to get a value, but instead of a numerical index you use the key that is associated with the value:</p>
+<pre><code>    print appledir['Tim']
+</code></pre>
+<p>That prints the value associated with the key 'Tim':</p>
+<pre><code>    CEO
+</code></pre>
+<h4 id="assigning-a-new-value-to-the-same-key-replaces-the-previous-value">Assigning a new value to the same key replaces the previous value</h4>
+<p>With a list, assigning a new value to an existing index replaces the previous value. The dictionary behaves the same way; if you assign a new value to the same key, the previous value is replaced:</p>
+<pre><code>    appledir['Tim'] = 'Buzz Lightyear'
+    print appledir['Tim']
+</code></pre>
+<p>This results in:</p>
+<pre><code>    Buzz Lightyear
+</code></pre>
+<h4 id="using-a-key-that-doesnt-exist-results-in-an-error">Using a key that doesn't exist results in an error</h4>
+<p>With a list, if you use a key that doesn't exist you get an error. The dictionary does the same if you try to access a key that doesn't exist:</p>
+<pre><code>    print appledir['Bob']
+</code></pre>
+<p>This results in:</p>
+<pre><code>    KeyError: 'Bob'
+</code></pre>
+<h4 id="use-if-in-to-check-for-a-key-before-using-it">Use 'if in' to check for a key before using it</h4>
+<p>As mentioned above, when you use a dictionary in a context where a list is expected, the dictionary provides its list of keys. You can use 'if in' to see if an item exists in a list; so if you use 'if in' with a dictionary, it will check if an item exists in the list of keys. </p>
+<p>For example, use 'if in' to check if a key exists before you try accessing it:</p>
+<pre><code>    if 'Bob' in appledir:
+        print appledir['Bob']
+    else:
+        print "Unknown"
+</code></pre>
+<h4 id="use-a-for-loop-to-iterate-through-a-dictionary">Use a for loop to iterate through a dictionary</h4>
+<p>As with a list, the for loop will iterate through a dictionary. Because a for loop expects a list, and a dictionary uses its list of keys in that case, the for loop iterates through the keys in the dictionary:</p>
+<pre><code>    for key in appledir:
+        print key
+</code></pre>
+<p>This results in:</p>
+<pre><code>    Tim
+    Angela
+</code></pre>
+<p>I used <em>key</em> as the variable name in the for loop, but that is just a variable name and I could have used any name:</p>
+<pre><code>    for spam in appledir:
+        print spam
+</code></pre>
+<p>Using <em>spam</em> as the variable name provides the same result:</p>
+<pre><code>    Tim
+    Angela
+</code></pre>
+<p>Note that in this case the keys were not listed alphabetically. That's a reminder that a dictionary is effectively in a random order. We'll see later how to sort keys alphabetically.</p>
+<p>Of course you'll usually want both the key and the value when iterating through a dictionary. One way to do that is to get the value from the dictionary for the provided key:</p>
+<pre><code>    for key in appledir:
+        value = appledir[key]
+        print key, ":", value
+</code></pre>
+<p>This results in:</p>
+<pre><code>    Tim : CEO
+    Angela : Retail
+</code></pre>
+<p>Programmers are by nature lazy. So when we see that it takes two whole lines to get both the key and the value, our first question is "Can't we get the key and value at the same time?"</p>
+<h4 id="use-the-items-method-to-get-the-key-and-value-at-the-same-time">Use the items() method to get the key and value at the same time</h4>
+<p>To allow you go get the key and value at the same time, dictionary provides an items() method that returns the keys and values at the same time.</p>
+<p>So if we use items() on the appledir dictionary:</p>
+<pre><code>    items = appledir.items()
+    print items
+</code></pre>
+<p>This is the result:</p>
+<pre><code>    [('Tim', 'CEO'), ('Angela', 'Retail')]
+</code></pre>
+<p>In this case, the <em>items</em> variable is a list with each item in it being a list containing one key and value.</p>
+<p>If we look at the first entry in the <em>items</em> list:</p>
+<pre><code>    print items[0]
+</code></pre>
+<p>We get this list with the key and the value:</p>
+<pre><code>    ('Tim', 'CEO')
+</code></pre>
+<p>The parenthesis indicate that this is a special kind of list called a <em>tuple</em>. We'll cover that in a future session.</p>
+<p>Using list unpacking, we can grab the key and value out of this list like so:</p>
+<pre><code>    key, value = items[0]
+    print key, ":", value
+</code></pre>
+<p>This results in:</p>
+<pre><code>    Tim : CEO
+</code></pre>
+<p>Combining all this, we can use a for loop to iterate on appledir.items() and pull out each key and value like so:</p>
+<pre><code>    for key, value in appledir.items():
+        print key, ":", value
+</code></pre>
+<p>This results in:</p>
+<pre><code>    Tim : CEO
+    Angela : Retail
+</code></pre>
+<h3 id="why-a-dictionary-is-fast">Why a dictionary is fast</h3>
+<p>If you check to see if an item is in a list, Python has to start at the top of the list and check what's at each index until it finds what you are looking for or reaches the end of the list. So the longer a list is, the longer it will take on average to find an item in the list.</p>
+<h4 id="a-dictionary-always-takes-the-same-amount-of-time-to-find-any-item">A dictionary always takes the same amount of time to find any item</h4>
+<p>However, no matter how large a dictionary is, it takes the same amount of time to look up any item. That's because of how it stores entries.</p>
+<h4 id="a-key-is-hashed-into-a-unique-number">A key is hashed into a unique number</h4>
+<p>Whenever a dictionary uses a key, it first <em>hashes</em> the key, which means it runs the key through an algorithm that generates a number unique to that key.</p>
+<p>For example, if the key is 'Tim', that string is run through the hashing algorithm, which returns a number such as 2000. Anytime the same string is run through the hashing algorithm, the algorithm is guaranteed to return the same number. </p>
+<p>So when you assign the key 'Tim' the value 'CEO', the dictionary first hashes the key and gets the value 2000.</p>
+<h4 id="the-value-is-stored-in-the-numerical-slot-indicated-by-the-keys-hash-value">The value is stored in the numerical slot indicated by the key's hash value</h4>
+<p>The dictionary then effectively places the value 'CEO' in slot 2000. </p>
+<p>When you later ask for the value associated with the key 'Tim', the dictionary first hashes that key and gets the value 2000, then the dictionary looks in slot 2000 and gets the value 'CEO'. If the key 'Angela' hashes to 5001, the dictionary looks in slot 5001 and gets the value 'Retail'.</p>
+<h4 id="the-only-time-taken-is-the-time-it-takes-to-run-the-hashing-algorithm">The only time taken is the time it takes to run the hashing algorithm</h4>
+<p>So the only time required is the time it takes to run the hashing algorithm. </p>
+<p>Looking for a value in a list, where Python has to look at each index one by one, is like trying to find someone's house in a neighborhood by knocking on one door at a time. Looking for a value in a dictionary is like knowing the address -- you can go directly to the right house.</p>
+<h4 id="keys-are-not-alphabetical-because-they-are-stored-in-the-order-of-the-hash-values">Keys are not alphabetical because they are stored in the order of the hash values</h4>
+<p>This explains why a dictionary is effectively "unordered". The keys are stored in the order specified by their hash values, and that is not likely to be in alphabetical order. In the appledir dictionary, the hash for 'Tim' happened to come before the hash for 'Angela'.</p>
+<h4 id="never-write-code-that-relies-on-the-order-of-items-in-a-dictionary">Never write code that relies on the order of items in a dictionary</h4>
+<p>Different releases of Python and implementions on other platforms may use different hashing algorithms, so there is no guaranteed order of items in a dictionary. The same script run on a different system may have a different result. </p>
+<p>So <em>never</em> write code that relies on the order of items in a dictionary -- that's a bug waiting to happen. If your code assumes that 'Tim' always comes before 'Angela', it's only a matter of time before your code stops working correctly.</p>

@@ -1,0 +1,842 @@
+<h1 id="elements-of-programming">Elements of Programming</h1>
+<h2 id="python-for-new-programmers-part-1">Python for New Programmers, Part 1</h2>
+<p>Welcome to the world of programming!</p>
+<h3 id="the-goal-of-this-class-is-simple">The goal of this class is simple</h3>
+<p>By the end of the last class, you should feel comfortable sitting down to write a script to solve a simple problem or automate a basic task. You will have gained a new skill. It's exciting.</p>
+<h4 id="you-will-be-able-to-create-a-report-of-how-many-apple-stores-are-in-each-country">You will be able to: Create a report of how many Apple stores are in each country</h4>
+<p>Specifically, our final exercise will be to:</p>
+<ol>
+<li>Parse a CSV file listing Apple stores.</li>
+<li>Figure out how many stores are in each country.</li>
+<li>Write that report to a file.</li>
+</ol>
+<p><img alt="Final exercise" src="assets/final_exercise.png" title="Final Exercise" /></p>
+<p>That may seem daunting right now, but I promise you'll be able to do it without breaking a sweat! We'll approach it incrementally and gently, one step at a time. In each session we'll review what we've learned in the previous sessions, so there will always be an opportunity to answer any questions and clear up any confusion.</p>
+<h4 id="this-class-is-for-you">This class is for you</h4>
+<p>I'm here to help you gain this new skill. If at any time you have questions or are confused about something, please let me know. We have plenty of time, and I want to make sure everyone has an enjoyable experience.</p>
+<p>After taking this class and getting some experience with programming, I encourage you to sign up for the advanced class, "Python for Experience Programmers", where you'll learn how to take your code to the next level.</p>
+<p>The principles covered in this first part apply to any programming language, with a few specific twists for Python. Once you understand these, learning any other programming language is a matter of understanding how that language implements the same principles.</p>
+<h3 id="using-terminal-to-run-python">Using Terminal to run Python</h3>
+<p>For now we'll use the Terminal app to run Python. Terminal is an app that gives you access to the operating system, and it's buried in your Applications folder. The easy way to run it is to use Spotlight to search for Terminal.</p>
+<p>Once you have Terminal running, at the prompt just type this and hit return:</p>
+<pre><code>    python
+</code></pre>
+<p>That will run the Python interpretor provided with Mac OS X. Once Python is running you should see a prompt like this:</p>
+<pre><code>    &gt;&gt;
+</code></pre>
+<p>You can type Python code after the prompt and hit <em>return</em> to execute the code.</p>
+<p>Now that you have Python running, let's get to it!</p>
+<hr />
+<div class="toc">
+<ul>
+<li><a href="#elements-of-programming">Elements of Programming</a><ul>
+<li><a href="#python-for-new-programmers-part-1">Python for New Programmers, Part 1</a><ul>
+<li><a href="#the-goal-of-this-class-is-simple">The goal of this class is simple</a><ul>
+<li><a href="#you-will-be-able-to-create-a-report-of-how-many-apple-stores-are-in-each-country">You will be able to: Create a report of how many Apple stores are in each country</a></li>
+<li><a href="#this-class-is-for-you">This class is for you</a></li>
+</ul>
+</li>
+<li><a href="#using-terminal-to-run-python">Using Terminal to run Python</a></li>
+</ul>
+</li>
+<li><a href="#todays-goal-a-gentle-introduction-to-the-elements-of-programming">Today's Goal: A gentle introduction to the elements of programming</a></li>
+<li><a href="#variables">Variables</a><ul>
+<li><a href="#what-is-a-variable">What is a variable?</a></li>
+<li><a href="#changing-the-value-of-a-variable">Changing the value of a variable</a></li>
+<li><a href="#the-easy-way-to-increment-a-variable">+=: The easy way to increment a variable</a></li>
+<li><a href="#you-can-assign-any-kind-of-new-value-to-an-existing-variable">You can assign any kind of new value to an existing variable</a></li>
+</ul>
+</li>
+<li><a href="#strings">Strings</a><ul>
+<li><a href="#what-is-a-string">What is a string?</a></li>
+<li><a href="#what-isnt-a-string">What isn't a string?</a></li>
+<li><a href="#whats-the-difference-between-single-quotes-and-double-quotes">What's the difference between single quotes and double quotes?</a></li>
+<li><a href="#the-print-statement">The print statement</a><ul>
+<li><a href="#adding-strings-together-when-printing-them">Adding strings together when printing them</a></li>
+<li><a href="#the-comma-also-converts-non-text-items-to-text">The comma also converts non-text items to text</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#functions">Functions</a><ul>
+<li><a href="#to-call-a-function-you-must-use-parenthesis-after-the-name">To call a function you must use parenthesis after the name</a><ul>
+<li><a href="#pass-any-arguments-inside-the-parenthesis">Pass any arguments inside the parenthesis</a></li>
+</ul>
+</li>
+<li><a href="#functions-can-return-values">Functions can return values</a></li>
+</ul>
+</li>
+<li><a href="#the-if-statement">The if statement</a><ul>
+<li><a href="#the-double-equals-operator-compares-two-values">==: The double equals operator compares two values</a></li>
+<li><a href="#the-if-statement-operates-on-true-and-false-values">The if statement operates on True and False values</a></li>
+<li><a href="#some-math-operations-return-true-or-false">Some math operations return True or False</a></li>
+<li><a href="#the-else-statement">The else statement</a></li>
+<li><a href="#elif-making-multiple-comparisons">elif: Making multiple comparisons</a></li>
+<li><a href="#the-if-statement-will-work-on-a-variable">The if statement will work on a variable</a></li>
+</ul>
+</li>
+<li><a href="#code-blocks">Code Blocks</a><ul>
+<li><a href="#code-blocks-are-preceded-by-a-colon">Code blocks are preceded by a colon</a></li>
+<li><a href="#lines-in-a-code-block-must-use-the-same-indentation">Lines in a code block must use the same indentation</a></li>
+<li><a href="#a-code-block-is-closed-by-the-first-unindented-line">A code block is closed by the first unindented line</a></li>
+</ul>
+</li>
+<li><a href="#objects">Objects</a><ul>
+<li><a href="#attributes">Attributes</a><ul>
+<li><a href="#an-attribute-is-a-variable-that-is-attached-to-an-object">An attribute is a variable that is attached to an object</a></li>
+</ul>
+</li>
+<li><a href="#methods">Methods</a><ul>
+<li><a href="#a-method-is-a-function-that-is-attached-to-an-object">A method is a function that is attached to an object</a></li>
+</ul>
+</li>
+<li><a href="#getting-information-about-an-object">Getting information about an object</a><ul>
+<li><a href="#type-finding-out-the-type-of-an-object">type(): Finding out the type of an object</a></li>
+<li><a href="#dir-finding-out-what-attributes-and-methods-are-attached-to-an-object">dir(): Finding out what attributes and methods are attached to an object</a></li>
+<li><a href="#help-getting-the-documentation-for-an-object">help(): Getting the documentation for an object</a></li>
+</ul>
+</li>
+<li><a href="#doing-math-with-objects">Doing math with objects</a><ul>
+<li><a href="#str-getting-the-string-equivalent-of-an-object">str(): Getting the string equivalent of an object</a></li>
+<li><a href="#int-getting-the-numerical-equivalent-of-a-string">int(): Getting the numerical equivalent of a string</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#lists">Lists</a><ul>
+<li><a href="#creating-a-list">Creating a list</a><ul>
+<li><a href="#square-brackets-create-an-empty-list">Square brackets create an empty list</a></li>
+<li><a href="#the-append-method-adds-an-item-to-the-end-of-the-list">The append() method adds an item to the end of the list</a></li>
+<li><a href="#you-can-create-a-list-from-scratch-using-comma-separated-items">You can create a list from scratch using comma-separated items</a></li>
+</ul>
+</li>
+<li><a href="#accessing-a-list">Accessing a list</a><ul>
+<li><a href="#list-indexes-start-with-zero">List indexes start with zero</a></li>
+<li><a href="#to-access-an-item-in-the-list-indicate-the-item-index-in-brackets">To access an item in the list, indicate the item index in brackets</a></li>
+<li><a href="#using-an-index-that-doesnt-exist-results-in-an-error">Using an index that doesn't exist results in an error</a></li>
+<li><a href="#negative-numbers-index-from-the-end-of-the-list">Negative numbers index from the end of the list</a></li>
+<li><a href="#you-can-change-an-item-in-the-list">You can change an item in the list</a></li>
+</ul>
+</li>
+<li><a href="#len-get-the-length-of-any-kind-of-list">len(): Get the length of any kind of list</a></li>
+<li><a href="#if-in-check-for-an-item-in-a-list">'if in': Check for an item in a list</a><ul>
+<li><a href="#use-if-not-in-check-for-something-not-being-in-the-list">Use 'if not in' check for something not being in the list</a></li>
+</ul>
+</li>
+<li><a href="#list-slicing">List Slicing</a><ul>
+<li><a href="#a-slice-starts-at-the-starting-index-and-goes-up-to-the-ending-index">A slice starts at the starting index and goes up to the ending index</a></li>
+<li><a href="#if-you-leave-out-the-ending-index-the-slice-will-go-to-the-end">If you leave out the ending index, the slice will go to the end</a></li>
+<li><a href="#if-you-leave-out-the-starting-index-the-slice-will-start-at-the-beginning">If you leave out the starting index, the slice will start at the beginning</a></li>
+<li><a href="#negative-numbers-are-very-useful-when-slicing">Negative numbers are very useful when slicing</a></li>
+<li><a href="#when-slicing-indexes-do-the-right-thing">When slicing, indexes 'do the right thing'</a></li>
+</ul>
+</li>
+<li><a href="#for-loops">for loops</a><ul>
+<li><a href="#a-for-loop-starts-at-the-beginning-of-a-list-and-goes-through-each-item-in-the-list-one-at-a-time">A for loop starts at the beginning of a list and goes through each item in the list one at a time</a></li>
+<li><a href="#the-variable-name-represents-the-current-item-in-the-list">The variable name represents the current item in the list</a></li>
+</ul>
+</li>
+<li><a href="#control-flow">Control Flow</a><ul>
+<li><a href="#continue-cause-the-loop-to-move-to-the-next-item-in-the-list">continue: cause the loop to move to the next item in the list</a></li>
+<li><a href="#break-break-out-of-the-loop-and-move-on">break: break out of the loop and move on</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#end-of-session-1">End of session 1!</a></li>
+<li><a href="#other-resources">Other resources</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr />
+<h2 id="todays-goal-a-gentle-introduction-to-the-elements-of-programming">Today's Goal: A gentle introduction to the elements of programming</h2>
+<p>Today we'll learn about the elements of programming that will prepare you for using any programming language. We'll go very incrementally and try things out as we go along. <strong>We have plenty of time!</strong> Ask any questions you have, and I'll be happy to make sure you understand everything as we go along.</p>
+<h2 id="variables">Variables</h2>
+<p>Variables are a critical part of all programming.</p>
+<h3 id="what-is-a-variable">What is a variable?</h3>
+<p>If you've never done any programming, you still might know about variables from math classes. Just like in math, a variable is a name that holds a value; without knowing the actual value, we can reference it by using the name.</p>
+<p>In Python, you define a variable simply by assigning a value to it, like so:</p>
+<pre><code>    spam = 5
+</code></pre>
+<p>That statement creates a variable named <em>spam</em> and assigns the value 5 to it.</p>
+<p>Once you've defined a variable, you can use it anywhere you could use the value. For example, we can add numbers together like so:</p>
+<pre><code>    5 + 20
+</code></pre>
+<p>So we can use our <em>spam</em> variable in the same way in place of the 5:</p>
+<pre><code>    spam + 20
+</code></pre>
+<p>The result is the same:</p>
+<pre><code>    25
+</code></pre>
+<p>You can use any name you want for a variable, as long as it doesn't conflict with a name reserved by Python; you'll learn the reserved names as we go along.</p>
+<h3 id="changing-the-value-of-a-variable">Changing the value of a variable</h3>
+<p>You can change the value of an existing variable by assigning a new value to it, like so:</p>
+<pre><code>    spam = 42
+</code></pre>
+<p>You can also adjust the value of a variable like so:</p>
+<pre><code>    spam = spam + 3
+</code></pre>
+<p>In that case, Python first does the math operation (42 + 3), then assigns the result to the <em>spam</em> variable. So after this, if you print the value of <em>spam</em>:</p>
+<pre><code>    print spam
+</code></pre>
+<p>You'll get:</p>
+<pre><code>    45
+</code></pre>
+<h3 id="the-easy-way-to-increment-a-variable">+=: The easy way to increment a variable</h3>
+<p>It's very common to do something like:</p>
+<pre><code>    spam = spam + 3
+</code></pre>
+<p>So Python provides a shortcut for this (programmers are lazy, we like shortcuts!), the += operator:</p>
+<pre><code>    spam += 3
+</code></pre>
+<p>That does exactly the same thing as <em>spam = spam + 3</em>, adding 3 to the existing value of <em>spam</em>. So if <em>spam</em> was 45 and you now print the value of <em>spam</em>:</p>
+<pre><code>    print spam
+</code></pre>
+<p>You'll get:</p>
+<pre><code>    48
+</code></pre>
+<p>You can do this with other math operations as well, such as -= to subtract a value from the variable, or *= to multiply the variable by a value:</p>
+<pre><code>    spam -= 5
+
+    spam *= 10
+</code></pre>
+<h3 id="you-can-assign-any-kind-of-new-value-to-an-existing-variable">You can assign any kind of new value to an existing variable</h3>
+<p>In some programming languages, once a variable has been assigned a number or a string, it can only hold number or string values after that. But in Python that's not the case; in Python you can assign any kind of new value you want to an existing variable.</p>
+<p>For example, so far the variable <em>spam</em> has been a number. But we can assign a string to it if we want:</p>
+<pre><code>    spam = "Monty"
+</code></pre>
+<p>And now <em>spam</em> is that string, so printing it:</p>
+<pre><code>    print spam
+</code></pre>
+<p>Gives us the string:</p>
+<pre><code>    Monty
+</code></pre>
+<p>By the way, the += trick works with strings too, so we can do this:</p>
+<pre><code>    spam += " Python"
+</code></pre>
+<p>And now printing spam gives us:</p>
+<pre><code>    Monty Python
+</code></pre>
+<p>Now that you know about variables, the next core concept to learn is the function.</p>
+<h2 id="strings">Strings</h2>
+<p>Most programming classes don't start by talking about strings, but I've discovered that starting here clears up a lot of potential confusion, especially given Python's somewhat unique approach to strings.</p>
+<h3 id="what-is-a-string">What is a string?</h3>
+<p>In programming, we refer to text intended to be read by a human as a "string". As in, a string of characters. Given that strings are for communicating with humans, they are <em>not</em> programming instructions, which is where confusion can happen when you are getting started.</p>
+<p>Strings are surrounded by quotes, like:</p>
+<pre><code>    "This is a string of text."
+</code></pre>
+<p>Type that text exactly (including the quotes) at the Python prompt and hit <em>return</em>. You'll see Python print out the text of the string like so:</p>
+<pre><code>    This is a string of text.
+</code></pre>
+<h3 id="what-isnt-a-string">What isn't a string?</h3>
+<p>Text surrounded by quotes is a string. Anything <em>not</em> surrounded by quotes is a programming instruction. For example, in Python you can combine strings by adding them together, like so:</p>
+<pre><code>    "My string " + "another string"
+</code></pre>
+<p>In that case, the text between the quotes are strings, and the + sign, since it's not inside quotes, is a programming instruction. It's code for Python to execute. The result is:</p>
+<pre><code>    My string another string
+</code></pre>
+<p>If the + sign were inside quotes, Python would treat it as part of a string and not as code. For example:</p>
+<pre><code>    "My string + another string"
+</code></pre>
+<p>Will print this:</p>
+<pre><code>    My string + another string
+</code></pre>
+<p>In that case the + is inside the quotes, so it's part of the text and is not code.</p>
+<p><em>Understanding the difference between text inside quotes and code outside of quotes will save you a lot of hassle!</em></p>
+<h3 id="whats-the-difference-between-single-quotes-and-double-quotes">What's the difference between single quotes and double quotes?</h3>
+<p>In Python, there's no difference between single and double quotes. You can use either to define a string:</p>
+<pre><code>    "Double quotes are fine."
+
+    'Single quotes are fine.'
+</code></pre>
+<p>In my slides and code you'll see me switch back and forth between double and single quotes based on what I think looks better.</p>
+<p>Okay, it's not true that there's <em>no</em> difference between double and single quotes...there is one useful difference.</p>
+<pre><code>    "If you want to use 'single quotes' as part of your string, you can do so by using double quotes to surround the string."
+
+    'If you want to use "double quotes" as part of your string, you can do so by using single quotes to surround the string.'
+</code></pre>
+<p>That's the <em>only</em> difference between using double and single quotes.</p>
+<h3 id="the-print-statement">The print statement</h3>
+<p>The print statement is how you can print text for the user running your script. For example, if you write this code:</p>
+<pre><code>    print "This is for you, user!"
+</code></pre>
+<p>The <em>print</em> part is code for Python, and the string is what you want printed out. So Python will print out:</p>
+<pre><code>    This is for you, user!
+</code></pre>
+<h4 id="adding-strings-together-when-printing-them">Adding strings together when printing them</h4>
+<p>When printing, you can add strings together if you like using the + command:</p>
+<pre><code>    print "Here is some text" + "and here is some more text"
+</code></pre>
+<p>This will print:</p>
+<pre><code>    Here is some textand here is some more text
+</code></pre>
+<p>Later you'll see cases where adding strings together is useful.</p>
+<p>Notice that Python adds the strings together exactly as you specified them, so in that case because we didn't have a space after <em>text</em> in the first string or before <em>and</em> in the second string, we got <em>textand</em>.</p>
+<p>One way to fix this is to add a space to one of the strings, like so:</p>
+<pre><code>    print "Here is some text " + "and here is some more text"
+</code></pre>
+<p>Because forgetting the space between strings is such a common mistake, the print statement provides a special way for you to add strings together, using a comma instead of a +:</p>
+<pre><code>    print "Here is some text", "and here is some more text"
+</code></pre>
+<p>When you add strings together using a comma, the print statement automatically adds a space for you:</p>
+<pre><code>    Here is some text and here is some more text
+</code></pre>
+<p>This <em>only</em> works as part of a print statement. You can't use a comma to add strings together if you aren't using a print statement.</p>
+<h4 id="the-comma-also-converts-non-text-items-to-text">The comma also converts non-text items to text</h4>
+<p>If you use a + to add strings together, you'll get an error if one of the items is not a string. For example:</p>
+<pre><code>    print "The answer is: " + 42
+</code></pre>
+<p>Python doesn't allow you to add strings and numbers, so you will get this error:</p>
+<pre><code>    TypeError: cannot concatenate 'str' and 'int' objects
+</code></pre>
+<p>You'll learn what 'str' and 'int' mean in a bit.</p>
+<p>However, when printing a string, if you use a comma, the print statement will turn a non-string item into a string for you. For example:</p>
+<pre><code>    print "This is my number:", 42
+</code></pre>
+<p>Because we used a comma, print turns the number 42 into a string and adds the strings together with a space between them:</p>
+<pre><code>    This is my number: 42
+</code></pre>
+<p>And that's everything you need to know about strings for now!</p>
+<hr />
+<h2 id="functions">Functions</h2>
+<p>A function allows you to re-use code without having to copy and paste
+all the code every time you use it. Instead you can just call the function.</p>
+<h3 id="to-call-a-function-you-must-use-parenthesis-after-the-name">To call a function you must use parenthesis after the name</h3>
+<p>Like a variable, a function has a name. Unlike a variable, to call a function you must use parenthesis after the name:</p>
+<pre><code>    function_name()
+</code></pre>
+<p>So if the function was named beep, you'd call it like so:</p>
+<pre><code>    beep()
+</code></pre>
+<p>Thankfully, Python doesn't actually have a <code>beep()</code> function! But I'll use the fictional beep() function as an example.</p>
+<h4 id="pass-any-arguments-inside-the-parenthesis">Pass any arguments inside the parenthesis</h4>
+<p>A function doesn't have to accept information from you to work, but most functions do need you to provide information. You provide information as an <em>argument</em> to a function. If a function takes an argument, you pass the arguments inside the parenthesis:</p>
+<pre><code>    function_name(argument)
+</code></pre>
+<p>You can provide a value such as a string or a number directly. For example, if the <code>beep()</code> function takes an argument specifying the number of times to beep, you can call it like so:</p>
+<pre><code>    beep(5)
+</code></pre>
+<p>Or you can pass the value using a variable:</p>
+<pre><code>    count = 5
+    beep(count)
+</code></pre>
+<p>A function can take multiple arguments, comma-separated:</p>
+<pre><code>    function_name(argument1, argument2)
+</code></pre>
+<h3 id="functions-can-return-values">Functions can return values</h3>
+<p>A function isn't required to return a value when you call it, but most functions do return information for you to use. If a function returns a value, you can assign the result to a variable:</p>
+<pre><code>    result = function_name()
+</code></pre>
+<p>Python provides a number of built-in functions you can call, such as the <code>max()</code> function. <code>max()</code> takes as many numbers as you'd like to provide and returns the number that is the highest:</p>
+<pre><code>    highest = max(5, 200, 1, 0)
+    print highest
+</code></pre>
+<p>This results in:</p>
+<pre><code>    200
+</code></pre>
+<p>Calling functions is one of the most common things you will do in programming.</p>
+<hr />
+<h2 id="the-if-statement">The if statement</h2>
+<p>Now you know enough to get into actual programming. Once you have an object that represents a string or number or whatever, you need to be able to do stuff with it. The if statement lets you make choices about what to do based on the value of the object.</p>
+<h3 id="the-double-equals-operator-compares-two-values">==: The double equals operator compares two values</h3>
+<p>As you've seen, a single equals sign assigns a value to a variable:</p>
+<pre><code>    pet = 'cat'
+</code></pre>
+<p>So now the variable <em>pet</em> is set to the string value <em>cat</em>.</p>
+<p>If you use <strong>two</strong> equals signs, ==, instead of <em>assigning</em> a value, you compare two values. For example, this statement compares the value of <em>pet</em> to the string <em>cat</em>:</p>
+<pre><code>    pet == 'cat'
+</code></pre>
+<p>Because pet is in fact equal to the value <em>cat</em>, this returns True:</p>
+<pre><code>    True
+</code></pre>
+<p>If you compare the value of <em>pet</em> to <em>dog</em>:</p>
+<pre><code>    pet == 'dog'
+</code></pre>
+<p>You get:</p>
+<pre><code>    False
+</code></pre>
+<h3 id="the-if-statement-operates-on-true-and-false-values">The if statement operates on True and False values</h3>
+<p>Now that you know how to compare values, you can use <em>if</em> to do something based on the result. The if statement operates on True and False values, so any operation that returns True or False will work.</p>
+<p>An if statement is used like this:</p>
+<pre><code>    if pet == 'cat':
+        print "It's a cat!"
+</code></pre>
+<p>Don't worry about the colon or indenting for now, you'll learn about that in a bit.</p>
+<p>In that case, if the <em>pet</em> variable is equal to <em>cat</em>, then you'll get:</p>
+<pre><code>    It's a cat!
+</code></pre>
+<p>If <em>pet</em> is equal to something else, nothing will be printed.</p>
+<h3 id="some-math-operations-return-true-or-false">Some math operations return True or False</h3>
+<p>As it happens, some math operations return True or False. For example:</p>
+<pre><code>    3 &gt; 2
+</code></pre>
+<p>Results in:</p>
+<pre><code>    True
+</code></pre>
+<p>And this:</p>
+<pre><code>    3 &gt; 5
+</code></pre>
+<p>Results in:</p>
+<pre><code>    False
+</code></pre>
+<p>That means that you can use if statements with these operations, such as:</p>
+<pre><code>    if 3 &gt; 2:
+        print "3 is still larger than 2!"
+</code></pre>
+<h3 id="the-else-statement">The else statement</h3>
+<p>If you want to do something if the statement was false, you can use <em>else</em>:</p>
+<pre><code>    if pet == 'dog':
+        print "It's a dog!"
+    else:
+        print "It's not a dog!"
+</code></pre>
+<p>Since <em>pet</em> is still set to <em>cat</em>, that results in:</p>
+<pre><code>    It's not a dog!
+</code></pre>
+<h3 id="elif-making-multiple-comparisons">elif: Making multiple comparisons</h3>
+<p>Sometimes if the first comparison was False, you want to check for another value. You can use <em>elif</em> (which stands for "else if") to do another comparison, like so:</p>
+<pre><code>    if pet == 'dog':
+        print "It's a dog!"
+    elif pet == 'cat':
+        print "It's a cat!"
+</code></pre>
+<p>That results in:</p>
+<pre><code>    It's a cat!
+</code></pre>
+<p>You can have as many elif statements as you want.</p>
+<p>And you can still use else -- it will only be used if everything else was false, like so:</p>
+<pre><code>    if pet == 'dog':
+        print "It's a dog!"
+    elif pet == 'bird':
+        print "It's a bird!"
+    elif pet == 'swallow':
+        print "It's a swallow!"
+    else:
+        print "It's something else, not sure what."
+</code></pre>
+<p>So in this case, because <em>pet</em> is not equal to <em>dog</em> or <em>bird</em> or <em>swallow</em>, you get:</p>
+<pre><code>    It's something else, not sure what.
+</code></pre>
+<p>Python processes the comparisons in the order you provide them, and stops as soon as one matches. So only one if/elif/else statement will be executed.</p>
+<h3 id="the-if-statement-will-work-on-a-variable">The if statement will work on a variable</h3>
+<p>Given that <em>if</em> operates on any True/False value, you can also use it with a boolean variable (a variable set to True or False):</p>
+<pre><code>    monkeys_can_fly = False
+
+    if monkeys_can_fly:
+        print "That's pretty cool!"
+    else:
+        print "Too bad. I wish monkeys could fly."
+</code></pre>
+<p>That results in:</p>
+<pre><code>    Too bad. I wish monkeys could fly.
+</code></pre>
+<p>Now let's talk about those colons and indented lines...</p>
+<hr />
+<h2 id="code-blocks">Code Blocks</h2>
+<p>A code block is some code that is grouped together. All languages have code blocks, but Python's handling of them is unique, and is probably the most controversial aspect of the language, because Python uses <em>whitespace significance</em>.</p>
+<p>To explain this, we'll start by creating a pet variable:</p>
+<pre><code>    pet = 'cat'
+</code></pre>
+<h3 id="code-blocks-are-preceded-by-a-colon">Code blocks are preceded by a colon</h3>
+<p>A code block is indented code, preceded by a line that ends with a colon. All of the indented lines under this if statement are part of the same code block:</p>
+<pre><code>    if pet == 'cat':
+        # These indented lines are the code block.
+        # They are only executed if the if statement is True.
+        print "It's a cat!"
+        print "I like cats."
+</code></pre>
+<p>You can't just put a colon after any statement; it must be a statement that supports a code block, such as the if statement.</p>
+<h3 id="lines-in-a-code-block-must-use-the-same-indentation">Lines in a code block must use the same indentation</h3>
+<p>Every line in a code block must be indented the same way. You can use any indentation you want (a space, three spaces, a tab, a tab and a space, and so on), as long as each line in that code block uses the same indentation. I use tabs for my code blocks, but here's an example of using two spaces:</p>
+<pre><code>    if pet == 'sloth':
+      print "I like sloths."
+      print "They are cool."
+</code></pre>
+<h3 id="a-code-block-is-closed-by-the-first-unindented-line">A code block is closed by the first unindented line</h3>
+<p>Python knows that the code block is closed when it encounters an unindented line or the end of the file. The unindented line is <strong>not</strong> part of the code block, but closes it:</p>
+<pre><code>    if pet == 'cat':
+        print "Lions are cats too."
+        print "Pretty cool fact."
+    print "By being unindented, this line closes the code block. It's not part of the block, but
+    it does close it."
+</code></pre>
+<p>Python will ignore blank lines in the code block; blank lines don't need to be indented and don't close the code block:</p>
+<pre><code>    if pet == 'cat':
+        print "Lions are cats too."
+
+        print "That blank line didn't close the code block."
+    print "But this unindented line did close it."
+</code></pre>
+<hr />
+<h2 id="objects">Objects</h2>
+<p>In Python, everything is an object.</p>
+<p>In the real world, all objects have values associated with them, such as their color and weight. All objects also have stuff you can do with them, that is, their functionality.</p>
+<p>In programming, objects also have values and functionality. We refer to these as an object's <em>attributes</em> and <em>methods</em>.</p>
+<h3 id="attributes">Attributes</h3>
+<h4 id="an-attribute-is-a-variable-that-is-attached-to-an-object">An attribute is a variable that is attached to an object</h4>
+<p>Like variables, attributes are simply values you can use. Attributes are attached to an object. You access an attribute using <em>dot notation</em>, which is just a fancy way of saying that you put a period and the attribute name after the object:</p>
+<pre><code>    myobject.attribute_name
+</code></pre>
+<p>For example, to access the number attribute called 'numerator':</p>
+<pre><code>    answer = 42
+    print answer.numerator
+</code></pre>
+<h3 id="methods">Methods</h3>
+<h4 id="a-method-is-a-function-that-is-attached-to-an-object">A method is a function that is attached to an object</h4>
+<p>Like functions, methods are reusable code. Methods are attached to an object. You access a method using dot notation and parenthesis:</p>
+<pre><code>    myobject.function_name()
+</code></pre>
+<p>For example, to access the number method called bit_length():</p>
+<pre><code>    answer = 42
+    print answer.bit_length()
+</code></pre>
+<h3 id="getting-information-about-an-object">Getting information about an object</h3>
+<p>Given that everything in Python is an object, you'll frequently need to find out what you can do with the object you are working with. There are three standalone functions that are particularly helpful for this purpose.</p>
+<h4 id="type-finding-out-the-type-of-an-object">type(): Finding out the type of an object</h4>
+<p>An object has a <em>type</em> -- the name of that kind of object. You can find out the type of any object by calling the <code>type()</code> function and passing the object to it:</p>
+<pre><code>    answer = 42
+    print type(answer)
+</code></pre>
+<p>In this case, the result is:</p>
+<pre><code>    &lt;type 'int'&gt;
+</code></pre>
+<p>In Python, an integer is called an 'int'.</p>
+<h4 id="dir-finding-out-what-attributes-and-methods-are-attached-to-an-object">dir(): Finding out what attributes and methods are attached to an object</h4>
+<p>Since everything in Python is an object, you'll often call a function and get an object in return, but you won't know what you can do with it. The <code>dir()</code> method, which stands for 'directory', will tell you the names of all attributes and methods attached to an object:</p>
+<pre><code>    answer = 42
+    print dir(answer)
+</code></pre>
+<p>In this case, the result is:</p>
+<pre><code>    ['__abs__', '__add__', '__and__', '__class__', '__cmp__', '__coerce__', '__delattr__',
+     '__div__', '__divmod__', '__doc__', '__float__', '__floordiv__', '__format__', 
+     '__getattribute__', '__getnewargs__', '__hash__', '__hex__', '__index__', '__init__', 
+     '__int__', '__invert__', '__long__', '__lshift__', '__mod__', '__mul__', '__neg__', 
+     '__new__', '__nonzero__', '__oct__', '__or__', '__pos__', '__pow__', '__radd__', '__rand__', 
+     '__rdiv__', '__rdivmod__', '__reduce__', '__reduce_ex__', '__repr__', '__rfloordiv__', 
+     '__rlshift__', '__rmod__', '__rmul__', '__ror__', '__rpow__', '__rrshift__', '__rshift__', 
+     '__rsub__', '__rtruediv__', '__rxor__', '__setattr__', '__sizeof__', '__str__', '__sub__', 
+     '__subclasshook__', '__truediv__', '__trunc__', '__xor__', 'bit_length', 'conjugate', 
+     'denominator', 'imag', 'numerator', 'real']
+</code></pre>
+<p>All the names that start with an underscore are names you are not supposed to use, they are for the person who implemented the object and are considered <em>private</em>. Annoyingly, <code>dir()</code> both lists these and puts them first, so you have to read through until you find the names that don't start with an underscore to see what you can use.</p>
+<p>In this case, 'bit_length' is the first name you can use. Also annoyingly, <code>dir()</code> does not indicate whether the name is for an attribute or method, so you either need to just try using it or look in the documentation. But how do you get the documentation, you ask?</p>
+<h4 id="help-getting-the-documentation-for-an-object">help(): Getting the documentation for an object</h4>
+<p>The <code>help()</code> function give you the documentation for an object:</p>
+<pre><code>    help(myobject)
+</code></pre>
+<p>In the Python interpretor, <code>help()</code> puts you into an interactive help mode (use 'q' to quit help in that case). In a script, <code>help()</code> returns the documentation as text.</p>
+<p>For example:</p>
+<pre><code>    answer = 42
+    print help(answer)
+</code></pre>
+<p>In this case, the result is:</p>
+<pre><code>    Help on int object:
+
+    class int(object)
+    |  int(x=0) -&gt; int or long
+    |  int(x, base=10) -&gt; int or long
+    |  
+    |  Convert a number or string to an integer, or return 0 if no arguments
+    |  are given.  If x is floating point, the conversion truncates towards zero.
+    |  If x is outside the integer range, the function returns a long instead.
+    ...
+</code></pre>
+<p>Sometimes it's helpful to read all the documentation for an object, but often it's too much to slog through and you really just want help on one attribute or method. You can get the help for just that item by using dot notation when you call <code>help()</code>:</p>
+<pre><code>    answer = 42
+    print help(answer.bit_length)
+</code></pre>
+<p>In this case, the result is:</p>
+<pre><code>    Help on built-in function bit_length:
+
+    bit_length(...)
+        int.bit_length() -&gt; int
+
+        Number of bits necessary to represent self in binary.
+        &gt;&gt;&gt; bin(37)
+        '0b100101'
+        &gt;&gt;&gt; (37).bit_length()
+        6
+</code></pre>
+<p>You can usually pass an object to <code>help()</code>, but if you pass a string object, <code>help()</code> uses the contents of the string and may give you the wrong response:</p>
+<pre><code>    mytext = "This is for the crazy ones"
+    print help(mytext)
+</code></pre>
+<p>In this case, the result is:</p>
+<pre><code>    no Python documentation found for 'This is for the crazy ones'
+</code></pre>
+<p>You can get the correct help by passing in the type of the object as a string.</p>
+<p>For example, in Python a string has the type 'str', so to get the help for a string object:</p>
+<pre><code>    print help('str')
+</code></pre>
+<p>In this case, the result is:</p>
+<pre><code>    Help on class str in module __builtin__:
+
+    class str(basestring)
+     |  str(object='') -&gt; string
+     |  
+     |  Return a nice string representation of the object.
+     |  If the argument is a string, the return value is the same object.
+     ...
+</code></pre>
+<h3 id="doing-math-with-objects">Doing math with objects</h3>
+<p>Since everything is an object, when you perform a mathematical operation, what's actually happening is that Python is calling special methods to tell the objects to add themselves together, and they figure out what to do.</p>
+<p>So this:</p>
+<pre><code>    print 10 + 5
+</code></pre>
+<p>Is really two int objects being told to add themselves together. In this case, the result is another int object:</p>
+<pre><code>    15
+</code></pre>
+<p>The fact that objects know how to add themselves together is why you can add strings:</p>
+<pre><code>    print "Monty" + "Python"
+</code></pre>
+<p>In this case, the result is another str object:</p>
+<pre><code>    MontyPython
+</code></pre>
+<p>Some languages let you add strings and numbers together:</p>
+<pre><code>    print "Hello" + 5
+</code></pre>
+<p>However, Python doesn't allow this:</p>
+<pre><code>    TypeError: cannot concatenate 'str' and 'int' objects
+</code></pre>
+<p>Python could try and figure out what you want, but the designers of Python prefer clarity and simplicity, and in this case they'd have to guess whether you meant to turn the string into a number, or turn the number into a string. Rather than guess, they require you to specify what you want.</p>
+<p>You can do this with the <code>str()</code> and <code>int()</code> functions.</p>
+<h4 id="str-getting-the-string-equivalent-of-an-object">str(): Getting the string equivalent of an object</h4>
+<p>The <code>str()</code> function takes whatever you give it and returns a string version. For example, to get a string equivalent of the 5:</p>
+<pre><code>    print "Hello" + str(5)
+</code></pre>
+<p>In this case, the 5 is turned into a string and the result is:</p>
+<pre><code>    Hello5
+</code></pre>
+<h4 id="int-getting-the-numerical-equivalent-of-a-string">int(): Getting the numerical equivalent of a string</h4>
+<p>If you want to get the numerical equivalent of a string, you use <code>int()</code>. However, the string must represent a valid number, or <code>int()</code> returns an error. For example:</p>
+<pre><code>    print int("Hello")
+</code></pre>
+<p>In this case, the result is:</p>
+<pre><code>    ValueError: invalid literal for int() with base 10: 'Hello'
+</code></pre>
+<p>But if the string represents a valid number:</p>
+<pre><code>    print int("42") + 5
+</code></pre>
+<p>The result is:</p>
+<pre><code>    47
+</code></pre>
+<p>It's actually common to use <code>int()</code>, because any value you read from a file or database will come in as a string, and if you know it represents a number, you'll need to use <code>int()</code> to get the numerical equivalent.</p>
+<hr />
+<h2 id="lists">Lists</h2>
+<p>Programming languages usually have something they specialize in. I consider Python to be a language about handling <em>lists</em>. There are many different kinds of lists in Python; for now we'll focus on the most basic list object, conveniently enough called a 'list'.</p>
+<h3 id="creating-a-list">Creating a list</h3>
+<h4 id="square-brackets-create-an-empty-list">Square brackets create an empty list</h4>
+<p>The most common way to create a list is using square brackets. This creates an empty list object:</p>
+<pre><code>    animals = []
+</code></pre>
+<p>Since it's an object, we can use <code>dir()</code> to see what attributes and methods it has:</p>
+<pre><code>    print dir(animals)
+</code></pre>
+<p>This results in:</p>
+<pre><code>    ['__add__', '__class__', '__contains__', '__delattr__', '__delitem__', '__delslice__', 
+    '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', 
+    '__getslice__', '__gt__', '__hash__', '__iadd__', '__imul__', '__init__', '__iter__', 
+    '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__',
+    '__repr__', '__reversed__', '__rmul__', '__setattr__', '__setitem__', '__setslice__', 
+    '__sizeof__', '__str__', '__subclasshook__', 'append', 'count', 'extend', 'index', 'insert', 
+    'pop', 'remove', 'reverse', 'sort']
+</code></pre>
+<p>Remember that you aren't supposed to use things that start with an underscore, so there are actually just a few items at the end you can use, starting with <code>append()</code>.</p>
+<h4 id="the-append-method-adds-an-item-to-the-end-of-the-list">The append() method adds an item to the end of the list</h4>
+<p>Use <code>append()</code> to add a single item to the end of a list:</p>
+<pre><code>    animals.append('cat')
+    animals.append('frog')
+    animals.append('bird')
+</code></pre>
+<p>If you now print out the list:</p>
+<pre><code>    print animals
+</code></pre>
+<p>This results in:</p>
+<pre><code>    ['cat', 'frog', 'bird']
+</code></pre>
+<p>Each item in the list is comma-separated.</p>
+<h4 id="you-can-create-a-list-from-scratch-using-comma-separated-items">You can create a list from scratch using comma-separated items</h4>
+<p>If you know what items you want in the list when you create it, you can add them at the same time you create the list:</p>
+<pre><code>    animals = ['cat', 'frog', 'bird', 'sloth', 'alligator']
+</code></pre>
+<h3 id="accessing-a-list">Accessing a list</h3>
+<p>To access a particular item in a list, you <em>index</em> into the list.</p>
+<h4 id="list-indexes-start-with-zero">List indexes start with zero</h4>
+<p>As humans, we'd naturally consider the first item in a list to be number 1. But almost all programming languages use <em>zero-based indexing</em>, which means the first item is number 0. No matter how much experience you have as a programmer, this is confusing and <strong>will</strong> result in bugs. Zero-based indexing is probably the biggest cause of bugs in the world.</p>
+<p>One hint is the word index. When I mention the index of an entry, remember that indexes start with zero.</p>
+<h4 id="to-access-an-item-in-the-list-indicate-the-item-index-in-brackets">To access an item in the list, indicate the item index in brackets</h4>
+<p>You can access an individual item in a list using the index in brackets, like this:</p>
+<pre><code>    print animals[0]
+</code></pre>
+<p>Since indexes start with zero, this gives the first item in the list:</p>
+<pre><code>    cat
+</code></pre>
+<h4 id="using-an-index-that-doesnt-exist-results-in-an-error">Using an index that doesn't exist results in an error</h4>
+<p>If you attempt to access an index that is outside the bounds of the list, you'll get an error. So this:</p>
+<pre><code>    print animals[42]
+</code></pre>
+<p>Results in:</p>
+<pre><code>    IndexError: list index out of range
+</code></pre>
+<p>It's actually great that in Python you get an error in this case. In traditional programming languages, doing this would give you the value from a random location in memory. Not only did that result in a zillion bugs, but it was probably the most common way that hackers would crack a system; once they knew you were indexing past the end of a list, they'd figure out a way to put their own code in that location and trick you into executing their code.</p>
+<h4 id="negative-numbers-index-from-the-end-of-the-list">Negative numbers index from the end of the list</h4>
+<p>As far as I know, Python was the first language to support negative numbers for indexes. Negative numbers index from the <strong>end</strong> of the list. </p>
+<p>There is no -0, so to get the item at the end of a list, you use index -1:</p>
+<pre><code>    print animals[-1]
+</code></pre>
+<p>This results in:</p>
+<pre><code>    alligator
+</code></pre>
+<p>To get the item second from the end, use -2:</p>
+<pre><code>    print animals[-2]
+</code></pre>
+<h4 id="you-can-change-an-item-in-the-list">You can change an item in the list</h4>
+<p>To change what is at a particular index, first there must be something at that index or you'll get an error. If there is something there, you can change it by assigning a value to that index like so:</p>
+<pre><code>    animals[1] = 'swallow'
+    print animals
+</code></pre>
+<p>This results in the second item being changed:</p>
+<pre><code>    ['cat', 'swallow', 'bird', 'sloth', 'alligator']
+</code></pre>
+<h3 id="len-get-the-length-of-any-kind-of-list">len(): Get the length of any kind of list</h3>
+<p>Annoyingly, while any function directly related to an object is usually a method attached to that object, there is a major exception. For lists, to get the count of the number of items in the list, you need to call the standalone function <code>len()</code> and pass the list object to it, like so:</p>
+<pre><code>    count = len(animals)
+    if count &gt; 2:
+        print "That's a lot of animals!"
+</code></pre>
+<p>There's a reason for this that I explain in class, but I'm not going to bother typing it out here. However I will mention that Python has a little trap waiting for you: If you look back at the <code>dir()</code> listing for a list, you'll notice an item called 'count' and it's natural to think, "Aha! This will tell me the length of the list!" <strong>No, it won't</strong> -- <code>count()</code> is a method to tell you how many times a particular item occurs in the list. I wish they'd named it something different or just not included it, because many a person new to Python gets tripped up by it.</p>
+<h3 id="if-in-check-for-an-item-in-a-list">'if in': Check for an item in a list</h3>
+<p>You can check whether an item is in the list using the <em>if in</em> statement, like so:</p>
+<pre><code>    if 'dog' in animals:
+        print 'Found a dog!'
+</code></pre>
+<p>Just so you can get used to the common ways to use the if statement, here's an example using elif and else as well:</p>
+<pre><code>    if 'dog' in animals:
+        print 'Found a dog!'
+    elif 'bird' in animals:
+        print 'Found a bird!'
+    else:
+        print 'Found nothing!'
+</code></pre>
+<h4 id="use-if-not-in-check-for-something-not-being-in-the-list">Use 'if not in' check for something <em>not</em> being in the list</h4>
+<p>To take action if something isn't in the list, you can use the <em>if not in</em> statement, like so:</p>
+<pre><code>    if 'cow' not in animals:
+        print "Where's the beef?"
+</code></pre>
+<h3 id="list-slicing">List Slicing</h3>
+<p>Another feature first introduced by Python is list <em>slicing</em>, which is a way to get a subset of a list. When you index into a list directly, you get just one value. But if you want to get multiple values, you can use slicing. This is done by providing a starting index and an ending index, separated by a colon, like so:</p>
+<pre><code>    animals = ['cat', 'swallow', 'bird', 'sloth', 'alligator']
+    print animals[1:4]
+</code></pre>
+<p>Note that the result will go <em>up to</em> the ending index but not include it, so in this case the result is:</p>
+<pre><code>    ['swallow', 'bird', 'sloth']
+</code></pre>
+<h4 id="a-slice-starts-at-the-starting-index-and-goes-up-to-the-ending-index">A slice starts at the starting index and goes <em>up to</em> the ending index</h4>
+<p>It can be confusing that the result doesn't include the ending index but just goes up to it. Whenever you aren't sure what you'll get, just subtract the starting index from the ending index, and that's the number of items you'll get in your result.</p>
+<p>So in this case we have a starting index of 2 and an ending index of 4:</p>
+<pre><code>    print animals[2:4]
+</code></pre>
+<p>4-2 = 2, so you get 2 items: </p>
+<pre><code>    ['bird', 'sloth']
+</code></pre>
+<h4 id="if-you-leave-out-the-ending-index-the-slice-will-go-to-the-end">If you leave out the ending index, the slice will go to the end</h4>
+<p>It's particularly convenient that if you provide just a starting index and a colon, you'll get everything up to the end of the list without having to know how long the list is:</p>
+<pre><code>    print animals[2:]
+</code></pre>
+<p>This results in:</p>
+<pre><code>    ['bird', 'sloth', 'alligator']
+</code></pre>
+<h4 id="if-you-leave-out-the-starting-index-the-slice-will-start-at-the-beginning">If you leave out the starting index, the slice will start at the beginning</h4>
+<p>Similarly, you can get the items starting at the beginning of the list by leaving out the starting index, like so:</p>
+<pre><code>    print animals[:3]
+</code></pre>
+<p>This results in:</p>
+<pre><code>    ['cat', 'swallow', 'bird']
+</code></pre>
+<p>This is great for when you just want the first N items of a list.</p>
+<h4 id="negative-numbers-are-very-useful-when-slicing">Negative numbers are very useful when slicing</h4>
+<p>Using negative numbers when slicing lets you do things with the end of the list without knowing how long it is. For example, to get the last three items of the list:</p>
+<pre><code>    print animals[-3:]
+</code></pre>
+<p>This results in:</p>
+<pre><code>    ['bird', 'sloth', 'alligator']
+</code></pre>
+<p>To get up to the last three items:</p>
+<pre><code>    print animals[:-3]
+</code></pre>
+<p>This results in:</p>
+<pre><code>    ['cat', 'swallow']
+</code></pre>
+<h4 id="when-slicing-indexes-do-the-right-thing">When slicing, indexes 'do the right thing'</h4>
+<p>If you directly index an item that doesn't exist, you get an error. But when slicing, Python is more forgiving and does what you mean. So if you ask for the first 10 items in the list and there are only 5 items in the list, it gives you the 5 without generating an error. Asking for the last 5 items in a 3 item list will get you the 3 items, etc. This just proves that the creators of Python love you.</p>
+<h3 id="for-loops">for loops</h3>
+<p>If you have a list, there's a good chance you want to go through all the items in the list, and it would be annoying to have to index the list for every item one at a time. There are various ways you can go through all the items in a list (which is called <em>iterating</em> through a list); the simplest and most used is the <em>for loop</em>.</p>
+<h4 id="a-for-loop-starts-at-the-beginning-of-a-list-and-goes-through-each-item-in-the-list-one-at-a-time">A for loop starts at the beginning of a list and goes through each item in the list one at a time</h4>
+<p>For each item in a list, the for loop executes the code block you provide to do something with that item.</p>
+<p>The syntax of a for loop is a bit more complex than anything else we've dealt with so far:</p>
+<pre><code>    for variable_name in list_name:
+        # Your code block here
+</code></pre>
+<p>'list_name' is the name of whatever list you are iterating through, and 'variable_name' is a name you provide that represents the item currently being looked at in the list. A for loop starts a code block, so the line must end with a colon.</p>
+<p>Here's an example. We'll use this list of products:</p>
+<pre><code>    products = ['iPad', 'Watch', 'iMac', 'Music']
+</code></pre>
+<p>This is a for loop operating on the products list:</p>
+<pre><code>    for spam in products:
+        print spam
+</code></pre>
+<h4 id="the-variable-name-represents-the-current-item-in-the-list">The variable name represents the current item in the list</h4>
+<p>In this case we've provided the variable name 'spam'. I use 'spam' here to make it clear that you can use any name you want. Whatever variable name you use, you can then use that variable name to do something with the current item in the list.</p>
+<p>The for loop starts with the first item in the list, in this case 'iPad'. It puts 'iPad' in the spam variable and then runs the code block. Our code block is one simple line that prints whatever the current item is.</p>
+<p>When the code block is done, the for loop moves to the next item in the list, in this case 'Watch', puts that item in the spam variable, then runs the code block. And so on up to the end of the list.</p>
+<p>In this case, the result is to print each item in the list:</p>
+<pre><code>    iPad
+    Watch
+    iMac
+    Music
+</code></pre>
+<p>Usually I wouldn't use a variable name like spam (except when I want to annoy my colleagues), I'd use something that reads logically, like 'product':</p>
+<pre><code>    for product in products:
+        print product
+</code></pre>
+<p>This does exactly the same thing as the above for loop. The point being that you can use any variable name you want, as long as you use that same name in the code block.</p>
+<h3 id="control-flow">Control Flow</h3>
+<p>Now that you know how to iterate through a list, let's talk about <em>control flow statements</em>, that is, using <em>continue</em> and <em>break</em> to change how a loop goes through a list.</p>
+<h4 id="continue-cause-the-loop-to-move-to-the-next-item-in-the-list">continue: cause the loop to move to the next item in the list</h4>
+<p>Sometimes you don't want to process a particular item in the list. In that case, you can use continue to tell the loop you want to move on to the next item.</p>
+<p>For our products list, let's say we want to skip any product that starts with an 'i'. The string object has a method called <code>startswith()</code> that we can use:</p>
+<pre><code>    for product in products:
+        if product.startswith('i'):
+            continue
+        print product
+</code></pre>
+<p>In this case, if the product starts with an 'i', we use continue to move on without printing it out. That means we skip 'iPad' and 'iMac' when printing the list:</p>
+<pre><code>    Watch
+    Music
+</code></pre>
+<h4 id="break-break-out-of-the-loop-and-move-on">break: break out of the loop and move on</h4>
+<p>Sometimes you've reached a point where you don't want to process anymore items in the list. In that case, you can use break to tell the loop to stop processing and move on to the rest of the code.</p>
+<p>For our products list, let's say we want to stop processing once we hit 'iMac':</p>
+<pre><code>    for product in products:
+        if product == 'iMac':
+            break
+        print product
+
+    print "Done!"
+</code></pre>
+<p>In this case, once we hit 'iMac', the loop stops and the next line of code, that prints "Done!" is executed:</p>
+<pre><code>    iPad
+    Watch
+    Done!
+</code></pre>
+<hr />
+<h2 id="end-of-session-1">End of session 1!</h2>
+<p>That's everything we're covering for today. It's a huge amount to absorb in one day! Next week we'll start writing scripts that make use of what we've learned here.</p>
+<h2 id="other-resources">Other resources</h2>
+<p>These are tutorials and books that I recommend for further learning of Python:</p>
+<ul>
+<li><a href="https://learnpython.org">learnpython.org</a> -- an interactive web-based Python tutorial.</li>
+<li><a href="https://www.amazon.com/Automate-Boring-Stuff-Python-Programming/dp/1593275994/">Automate the Boring Stuff With Python</a> -- an excellent project-based book. It's also available as open source for free if you prefer that version.</li>
+</ul>
+<p>Note that most versions of these have converted to Python 3. The only real difference you will notice is that in Python 3, print is a function, so you have to use parenthesis: <code>print("Parens are hard to remember.")</code>.</p>
